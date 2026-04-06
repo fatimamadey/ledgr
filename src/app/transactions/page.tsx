@@ -2,11 +2,11 @@
 
 import PageContainer from '@/components/layout/PageContainer';
 
-export default function Dashboard() {
+export default function TransactionsPage() {
   return (
-    <PageContainer title="Dashboard" subtitle="Your financial overview">
+    <PageContainer title="Transactions" subtitle="View and manage your transactions">
       <div className="flex items-center justify-center rounded-xl border-2 border-dashed border-gray-300 py-24 text-gray-400">
-        Dashboard coming soon
+        Transactions page coming soon
       </div>
     </PageContainer>
   );
