@@ -5,7 +5,7 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 import Card from '@/components/ui/Card';
 import { useCategorySpending } from '@/store/selectors';
 import { CATEGORY_COLORS } from '@/lib/constants';
-import { formatCurrency, getLastNMonths } from '@/lib/utils';
+import { formatCurrency, getLastNMonths, getMonthLabelLong } from '@/lib/utils';
 import { Category } from '@/lib/types';
 
 export default function SpendingPieChart() {
@@ -15,10 +15,7 @@ export default function SpendingPieChart() {
   const month = months[index];
   const spending = useCategorySpending(month);
 
-  const monthLabel = new Intl.DateTimeFormat('en-US', {
-    month: 'long',
-    year: 'numeric',
-  }).format(new Date(month + '-01'));
+  const monthLabel = getMonthLabelLong(month);
 
   const canPrev = index > 0;
   const canNext = index < months.length - 1;

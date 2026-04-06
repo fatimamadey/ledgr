@@ -26,9 +26,18 @@ export function getCurrentMonth(): string {
 }
 
 export function getMonthLabel(dateStr: string): string {
+  const [y, m] = dateStr.split('-').map(Number);
   return new Intl.DateTimeFormat('en-US', {
     month: 'short',
-  }).format(new Date(dateStr + '-01'));
+  }).format(new Date(y, m - 1, 1));
+}
+
+export function getMonthLabelLong(dateStr: string): string {
+  const [y, m] = dateStr.split('-').map(Number);
+  return new Intl.DateTimeFormat('en-US', {
+    month: 'long',
+    year: 'numeric',
+  }).format(new Date(y, m - 1, 1));
 }
 
 export function isCurrentMonth(dateStr: string): boolean {
