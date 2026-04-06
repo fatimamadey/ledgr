@@ -6,7 +6,6 @@ import FileUploader from '@/components/upload/FileUploader';
 import CsvColumnMapper from '@/components/upload/CsvColumnMapper';
 import TransactionPreview from '@/components/upload/TransactionPreview';
 import { parseCsvFile, CsvParseResult } from '@/lib/parsers/csv';
-import { parsePdfFile } from '@/lib/parsers/pdf';
 import { ColumnMapping, ParsedTransaction, Category, TransactionType } from '@/lib/types';
 import { detectCategory, detectTransactionType } from '@/lib/categorize';
 import { useLedgrStore } from '@/store';
@@ -46,30 +45,13 @@ export default function UploadModal({
     setLoading(true);
 
     try {
-      if (file.name.endsWith('.csv')) {
-        const result = await parseCsvFile(file);
-        setCsvData(result);
-        setStep('map');
-      } else if (file.name.endsWith('.pdf')) {
-        const result = await parsePdfFile(file);
-        const transactions: ParsedTransaction[] = result.rows.map((row) => {
-          const rawAmount = parseFloat(row.amount);
-          const type = detectTransactionType(row.description, rawAmount);
-          const category = detectCategory(row.description);
-          return {
-            description: row.description,
-            amount: Math.abs(rawAmount),
-            date: normalizeDate(row.date),
-            category,
-            type,
-            selected: true,
-          };
-        });
-        setParsedTransactions(transactions);
-        setStep('preview');
-      } else {
-        setError('Unsupported file type. Please upload a CSV or PDF file.');
+      if (!file.name.endsWith('.csv')) {
+        setError('Please upload a .csv file.');
+        return;
       }
+      const result = await parseCsvFile(file);
+      setCsvData(result);
+      setStep('map');
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to parse file');
     } finally {
@@ -139,14 +121,14 @@ export default function UploadModal({
     <Modal
       open={open}
       onClose={handleClose}
-      title="Import Transactions"
+      title="Import from CSV"
       wide={step === 'preview'}
     >
       {/* Step indicator */}
       <div className="mb-5 flex items-center gap-2 text-xs">
         <span className={stepLabel('upload', step)}>Upload</span>
         <span className="text-gray-300">→</span>
-        <span className={stepLabel('map', step)}>Map</span>
+        <span className={stepLabel('map', step)}>Map Columns</span>
         <span className="text-gray-300">→</span>
         <span className={stepLabel('preview', step)}>Preview</span>
         <span className="text-gray-300">→</span>
@@ -162,7 +144,7 @@ export default function UploadModal({
       {loading && (
         <div className="flex items-center justify-center gap-3 py-12">
           <div className="h-5 w-5 animate-spin rounded-full border-2 border-indigo-600 border-t-transparent" />
-          <span className="text-sm text-gray-500">Parsing file...</span>
+          <span className="text-sm text-gray-500">Parsing CSV...</span>
         </div>
       )}
 

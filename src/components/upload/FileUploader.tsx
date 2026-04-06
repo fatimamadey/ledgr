@@ -5,10 +5,8 @@ import { cn } from '@/lib/utils';
 
 export default function FileUploader({
   onFileSelect,
-  accept = '.csv,.pdf',
 }: {
   onFileSelect: (file: File) => void;
-  accept?: string;
 }) {
   const [isDragging, setIsDragging] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -38,15 +36,15 @@ export default function FileUploader({
           : 'border-gray-300 bg-white hover:border-gray-400 hover:bg-gray-50'
       )}
     >
-      <span className="text-4xl">📤</span>
+      <span className="text-4xl">📄</span>
       <p className="mt-3 text-sm font-medium text-gray-900">
-        Drop your file here or click to browse
+        Drop your CSV here or click to browse
       </p>
-      <p className="mt-1 text-xs text-gray-500">Supports CSV and PDF bank statements</p>
+      <p className="mt-1 text-xs text-gray-500">Accepts .csv bank statement exports</p>
       <input
         ref={inputRef}
         type="file"
-        accept={accept}
+        accept=".csv"
         onChange={handleChange}
         className="hidden"
       />
