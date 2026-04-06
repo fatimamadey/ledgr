@@ -1,39 +1,42 @@
 'use client';
 
-import { ParsedTransaction } from '@/lib/types';
+import { ParsedTransaction, Category, TransactionType } from '@/lib/types';
+import { CATEGORIES } from '@/lib/constants';
 import { formatCurrency } from '@/lib/utils';
-import Card from '@/components/ui/Card';
 
 export default function TransactionPreview({
   transactions,
   onToggle,
+  onUpdate,
   onConfirm,
   onCancel,
 }: {
   transactions: ParsedTransaction[];
   onToggle: (index: number) => void;
+  onUpdate: (index: number, field: 'category' | 'type', value: string) => void;
   onConfirm: () => void;
   onCancel: () => void;
 }) {
   const selected = transactions.filter((t) => t.selected);
 
   return (
-    <Card>
+    <div>
       <div className="mb-4 flex items-center justify-between">
-        <h3 className="text-lg font-semibold text-gray-900">
-          Preview ({selected.length} of {transactions.length} selected)
-        </h3>
+        <p className="text-sm text-gray-500">
+          {selected.length} of {transactions.length} selected
+        </p>
       </div>
 
-      <div className="max-h-96 overflow-y-auto">
+      <div className="max-h-80 overflow-y-auto rounded-lg border border-gray-200">
         <table className="w-full text-left text-sm">
           <thead>
             <tr className="border-b border-gray-200 bg-gray-50">
-              <th className="px-3 py-2 font-medium text-gray-600 w-10"></th>
+              <th className="px-3 py-2 font-medium text-gray-600 w-8"></th>
               <th className="px-3 py-2 font-medium text-gray-600">Description</th>
               <th className="px-3 py-2 font-medium text-gray-600">Date</th>
               <th className="px-3 py-2 text-right font-medium text-gray-600">Amount</th>
               <th className="px-3 py-2 font-medium text-gray-600">Type</th>
+              <th className="px-3 py-2 font-medium text-gray-600">Category</th>
             </tr>
           </thead>
           <tbody>
@@ -50,23 +53,37 @@ export default function TransactionPreview({
                     className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                   />
                 </td>
-                <td className="px-3 py-2 text-gray-900">{t.description}</td>
-                <td className="px-3 py-2 text-gray-500">{t.date}</td>
-                <td className={`px-3 py-2 text-right font-semibold ${
+                <td className="px-3 py-2 text-gray-900 max-w-[180px] truncate">{t.description}</td>
+                <td className="px-3 py-2 text-gray-500 whitespace-nowrap">{t.date}</td>
+                <td className={`px-3 py-2 text-right font-semibold whitespace-nowrap ${
                   t.type === 'income' ? 'text-emerald-600' : 'text-red-600'
                 }`}>
                   {t.type === 'income' ? '+' : '-'}{formatCurrency(t.amount)}
                 </td>
                 <td className="px-3 py-2">
-                  <span
-                    className={`rounded-full px-2 py-0.5 text-xs font-medium ${
+                  <select
+                    value={t.type}
+                    onChange={(e) => onUpdate(i, 'type', e.target.value)}
+                    className={`rounded border px-1.5 py-0.5 text-xs font-medium ${
                       t.type === 'income'
-                        ? 'bg-emerald-50 text-emerald-700'
-                        : 'bg-red-50 text-red-700'
+                        ? 'border-emerald-200 bg-emerald-50 text-emerald-700'
+                        : 'border-red-200 bg-red-50 text-red-700'
                     }`}
                   >
-                    {t.type}
-                  </span>
+                    <option value="expense">expense</option>
+                    <option value="income">income</option>
+                  </select>
+                </td>
+                <td className="px-3 py-2">
+                  <select
+                    value={t.category}
+                    onChange={(e) => onUpdate(i, 'category', e.target.value)}
+                    className="rounded border border-gray-200 bg-gray-50 px-1.5 py-0.5 text-xs"
+                  >
+                    {CATEGORIES.map((cat) => (
+                      <option key={cat} value={cat}>{cat}</option>
+                    ))}
+                  </select>
                 </td>
               </tr>
             ))}
@@ -89,6 +106,6 @@ export default function TransactionPreview({
           Cancel
         </button>
       </div>
-    </Card>
+    </div>
   );
 }

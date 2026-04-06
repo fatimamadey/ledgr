@@ -2,8 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { ColumnMapping } from '@/lib/types';
-import Card from '@/components/ui/Card';
-
 function autoDetectColumn(headers: string[], keywords: string[]): string | null {
   const lower = headers.map((h) => h.toLowerCase().trim());
   for (const kw of keywords) {
@@ -42,8 +40,7 @@ export default function CsvColumnMapper({
   ];
 
   return (
-    <Card>
-      <h3 className="mb-4 text-lg font-semibold text-gray-900">Map Columns</h3>
+    <div>
       <p className="mb-4 text-xs text-gray-500">
         Match your CSV columns to the fields below. We auto-detected what we could.
       </p>
@@ -73,6 +70,6 @@ export default function CsvColumnMapper({
       >
         Apply Mapping
       </button>
-    </Card>
+    </div>
   );
 }

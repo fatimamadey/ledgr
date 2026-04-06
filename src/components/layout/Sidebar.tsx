@@ -50,7 +50,6 @@ const navItems = [
   { href: '/transactions', label: 'Transactions', icon: '💳' },
   { href: '/debts', label: 'Debts', icon: '📋' },
   { href: '/budgets', label: 'Budgets', icon: '🎯' },
-  { href: '/upload', label: 'Upload', icon: '📤' },
 ];
 
 export default function Sidebar() {
