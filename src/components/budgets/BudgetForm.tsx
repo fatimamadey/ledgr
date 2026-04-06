@@ -1,0 +1,90 @@
+'use client';
+
+import { useState } from 'react';
+import { useLedgrStore } from '@/store';
+import { CATEGORIES } from '@/lib/constants';
+import { Category } from '@/lib/types';
+import Card from '@/components/ui/Card';
+
+export default function BudgetForm({ onClose }: { onClose?: () => void }) {
+  const budgets = useLedgrStore((s) => s.budgets);
+  const setBudget = useLedgrStore((s) => s.setBudget);
+  const [category, setCategory] = useState<Category>('Food');
+  const [monthlyLimit, setMonthlyLimit] = useState('');
+
+  const existingCategories = new Set(budgets.map((b) => b.category));
+  const availableCategories = CATEGORIES.filter(
+    (c) => c !== 'Income' && !existingCategories.has(c)
+  );
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!monthlyLimit) return;
+
+    setBudget({ category, monthlyLimit: parseFloat(monthlyLimit) });
+    setMonthlyLimit('');
+    onClose?.();
+  };
+
+  if (availableCategories.length === 0) {
+    return (
+      <Card>
+        <p className="text-sm text-gray-500">All categories have budgets set.</p>
+      </Card>
+    );
+  }
+
+  return (
+    <Card>
+      <h3 className="mb-4 text-lg font-semibold text-gray-900">Set Budget</h3>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div>
+          <label className="mb-1 block text-sm font-medium text-gray-700">Category</label>
+          <select
+            value={category}
+            onChange={(e) => setCategory(e.target.value as Category)}
+            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+          >
+            {availableCategories.map((cat) => (
+              <option key={cat} value={cat}>
+                {cat}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div>
+          <label className="mb-1 block text-sm font-medium text-gray-700">Monthly Limit</label>
+          <input
+            type="number"
+            value={monthlyLimit}
+            onChange={(e) => setMonthlyLimit(e.target.value)}
+            placeholder="0.00"
+            min="1"
+            step="0.01"
+            required
+            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+          />
+        </div>
+
+        <div className="flex gap-2">
+          <button
+            type="submit"
+            className="flex-1 rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-indigo-700"
+          >
+            Set Budget
+          </button>
+          {onClose && (
+            <button
+              type="button"
+              onClick={onClose}
+              className="rounded-lg border border-gray-300 px-4 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+            >
+              Cancel
+            </button>
+          )}
+        </div>
+      </form>
+    </Card>
+  );
+}

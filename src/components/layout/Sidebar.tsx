@@ -4,6 +4,46 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { useState } from 'react';
+import { useLedgrStore } from '@/store';
+import { generateSeedTransactions, generateSeedDebts, generateSeedBudgets } from '@/lib/seed';
+
+function SeedDataButtons() {
+  const transactions = useLedgrStore((s) => s.transactions);
+  const addTransactions = useLedgrStore((s) => s.addTransactions);
+  const addDebt = useLedgrStore((s) => s.addDebt);
+  const setBudget = useLedgrStore((s) => s.setBudget);
+
+  const loadSeed = () => {
+    addTransactions(generateSeedTransactions());
+    generateSeedDebts().forEach((d) => addDebt(d));
+    generateSeedBudgets().forEach((b) => setBudget(b));
+  };
+
+  const clearAll = () => {
+    useLedgrStore.setState({ transactions: [], debts: [], budgets: [] });
+  };
+
+  return (
+    <div className="space-y-1">
+      {transactions.length === 0 && (
+        <button
+          onClick={loadSeed}
+          className="w-full rounded-lg px-3 py-2 text-left text-xs font-medium text-indigo-600 hover:bg-indigo-50"
+        >
+          Load Sample Data
+        </button>
+      )}
+      {transactions.length > 0 && (
+        <button
+          onClick={clearAll}
+          className="w-full rounded-lg px-3 py-2 text-left text-xs font-medium text-gray-400 hover:bg-red-50 hover:text-red-600"
+        >
+          Clear All Data
+        </button>
+      )}
+    </div>
+  );
+}
 
 const navItems = [
   { href: '/', label: 'Dashboard', icon: '📊' },
@@ -76,8 +116,9 @@ export default function Sidebar() {
           ))}
         </nav>
 
-        <div className="border-t border-gray-200 px-6 py-4">
-          <p className="text-xs text-gray-400">Ledgr v1.0</p>
+        <div className="border-t border-gray-200 px-4 py-4 space-y-2">
+          <SeedDataButtons />
+          <p className="text-xs text-gray-400 px-2">Ledgr v1.0</p>
         </div>
       </aside>
     </>
