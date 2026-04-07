@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useState } from 'react';
+import { Upload } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export default function FileUploader({
@@ -32,11 +33,11 @@ export default function FileUploader({
       className={cn(
         'flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed px-6 py-16 text-center transition-colors',
         isDragging
-          ? 'border-indigo-400 bg-indigo-50'
+          ? 'border-slate-500 bg-slate-100'
           : 'border-gray-300 bg-white hover:border-gray-400 hover:bg-gray-50'
       )}
     >
-      <span className="text-4xl">📄</span>
+      <Upload size={28} className="text-gray-400" />
       <p className="mt-3 text-sm font-medium text-gray-900">
         Drop your CSV here or click to browse
       </p>

@@ -115,7 +115,7 @@ export default function UploadModal({
   };
 
   const stepLabel = (s: Step, current: Step) =>
-    s === current ? 'text-indigo-600 font-medium' : 'text-gray-400';
+    s === current ? 'text-slate-700 font-medium' : 'text-gray-400';
 
   return (
     <Modal
@@ -143,7 +143,7 @@ export default function UploadModal({
 
       {loading && (
         <div className="flex items-center justify-center gap-3 py-12">
-          <div className="h-5 w-5 animate-spin rounded-full border-2 border-indigo-600 border-t-transparent" />
+          <div className="h-5 w-5 animate-spin rounded-full border-2 border-slate-700 border-t-transparent" />
           <span className="text-sm text-gray-500">Parsing CSV...</span>
         </div>
       )}
@@ -173,7 +173,11 @@ export default function UploadModal({
 
       {step === 'done' && (
         <div className="py-8 text-center">
-          <span className="text-4xl">✅</span>
+          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100">
+            <svg className="h-6 w-6 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
           <p className="mt-3 text-lg font-semibold text-gray-900">
             {importedCount} transaction{importedCount !== 1 ? 's' : ''} imported!
           </p>
@@ -189,7 +193,7 @@ export default function UploadModal({
             </button>
             <button
               onClick={handleClose}
-              className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
+              className="rounded-lg bg-slate-700 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800"
             >
               Done
             </button>

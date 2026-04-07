@@ -22,7 +22,7 @@ export default function TransactionFilters({
       <select
         value={filters.type}
         onChange={(e) => onChange({ ...filters, type: e.target.value as TransactionType | 'all' })}
-        className="rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+        className="rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-slate-600 focus:outline-none focus:ring-1 focus:ring-slate-600"
       >
         <option value="all">All Types</option>
         <option value="expense">Expenses</option>
@@ -32,7 +32,7 @@ export default function TransactionFilters({
       <select
         value={filters.category}
         onChange={(e) => onChange({ ...filters, category: e.target.value as Category | 'all' })}
-        className="rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+        className="rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-slate-600 focus:outline-none focus:ring-1 focus:ring-slate-600"
       >
         <option value="all">All Categories</option>
         {CATEGORIES.map((cat) => (
@@ -47,7 +47,7 @@ export default function TransactionFilters({
         value={filters.dateFrom}
         onChange={(e) => onChange({ ...filters, dateFrom: e.target.value })}
         placeholder="From"
-        className="rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+        className="rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-slate-600 focus:outline-none focus:ring-1 focus:ring-slate-600"
       />
 
       <input
@@ -55,7 +55,7 @@ export default function TransactionFilters({
         value={filters.dateTo}
         onChange={(e) => onChange({ ...filters, dateTo: e.target.value })}
         placeholder="To"
-        className="rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+        className="rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-slate-600 focus:outline-none focus:ring-1 focus:ring-slate-600"
       />
 
       {(filters.category !== 'all' || filters.type !== 'all' || filters.dateFrom || filters.dateTo) && (
@@ -63,7 +63,7 @@ export default function TransactionFilters({
           onClick={() =>
             onChange({ category: 'all', type: 'all', dateFrom: '', dateTo: '' })
           }
-          className="text-sm text-indigo-600 hover:text-indigo-700"
+          className="text-sm text-slate-700 hover:text-slate-800"
         >
           Clear filters
         </button>

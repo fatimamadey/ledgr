@@ -43,7 +43,7 @@ export default function BudgetForm({ onClose }: { onClose?: () => void }) {
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value as Category)}
-            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-slate-600 focus:outline-none focus:ring-1 focus:ring-slate-600"
           >
             {availableCategories.map((cat) => (
               <option key={cat} value={cat}>
@@ -63,14 +63,14 @@ export default function BudgetForm({ onClose }: { onClose?: () => void }) {
             min="1"
             step="0.01"
             required
-            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-slate-600 focus:outline-none focus:ring-1 focus:ring-slate-600"
           />
         </div>
 
         <div className="flex gap-2">
           <button
             type="submit"
-            className="flex-1 rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-indigo-700"
+            className="flex-1 rounded-lg bg-slate-700 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-slate-800"
           >
             Set Budget
           </button>

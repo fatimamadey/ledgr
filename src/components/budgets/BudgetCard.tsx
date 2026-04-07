@@ -2,7 +2,7 @@
 
 import { Budget } from '@/lib/types';
 import { formatCurrency } from '@/lib/utils';
-import { CATEGORY_ICONS } from '@/lib/constants';
+import CategoryIcon from '@/components/ui/CategoryIcon';
 import { useBudgetProgress } from '@/store/selectors';
 import { useLedgrStore } from '@/store';
 import Card from '@/components/ui/Card';
@@ -28,8 +28,10 @@ export default function BudgetCard({ budget }: { budget: Budget }) {
   return (
     <Card hover>
       <div className="flex items-start justify-between">
-        <div className="flex items-center gap-2">
-          <span className="text-xl">{CATEGORY_ICONS[budget.category]}</span>
+        <div className="flex items-center gap-2.5">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gray-100">
+            <CategoryIcon category={budget.category} size={15} className="text-gray-500" />
+          </div>
           <h3 className="font-semibold text-gray-900">{budget.category}</h3>
         </div>
         <Badge label={status.label} variant={status.variant} />

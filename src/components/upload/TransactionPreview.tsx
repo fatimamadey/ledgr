@@ -50,7 +50,7 @@ export default function TransactionPreview({
                     type="checkbox"
                     checked={t.selected}
                     onChange={() => onToggle(i)}
-                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                    className="h-4 w-4 rounded border-gray-300 text-slate-700 focus:ring-slate-600"
                   />
                 </td>
                 <td className="px-3 py-2 text-gray-900 max-w-[180px] truncate">{t.description}</td>
@@ -95,7 +95,7 @@ export default function TransactionPreview({
         <button
           onClick={onConfirm}
           disabled={selected.length === 0}
-          className="flex-1 rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-indigo-700 disabled:bg-gray-300 disabled:cursor-not-allowed"
+          className="flex-1 rounded-lg bg-slate-700 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-slate-800 disabled:bg-gray-300 disabled:cursor-not-allowed"
         >
           Import {selected.length} Transaction{selected.length !== 1 ? 's' : ''}
         </button>

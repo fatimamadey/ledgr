@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Target } from 'lucide-react';
 import PageContainer from '@/components/layout/PageContainer';
 import BudgetForm from '@/components/budgets/BudgetForm';
 import BudgetCard from '@/components/budgets/BudgetCard';
@@ -17,7 +18,7 @@ export default function BudgetsPage() {
       action={
         <button
           onClick={() => setShowForm(!showForm)}
-          className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-indigo-700"
+          className="rounded-lg bg-slate-700 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-slate-800"
         >
           {showForm ? 'Hide Form' : '+ Set Budget'}
         </button>
@@ -32,7 +33,7 @@ export default function BudgetsPage() {
 
         {budgets.length === 0 ? (
           <div className="flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-300 py-16 text-center">
-            <span className="text-4xl">🎯</span>
+            <Target size={32} className="text-gray-300" />
             <p className="mt-3 text-sm font-medium text-gray-900">No budgets set</p>
             <p className="mt-1 text-sm text-gray-500">
               Set a monthly spending limit for a category to start tracking

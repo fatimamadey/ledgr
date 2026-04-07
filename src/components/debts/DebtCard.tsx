@@ -55,7 +55,7 @@ export default function DebtCard({ debt }: { debt: Debt }) {
         </div>
         <ProgressBar
           percentage={percentage}
-          color={isPaidOff ? 'bg-emerald-500' : 'bg-indigo-600'}
+          color={isPaidOff ? 'bg-emerald-500' : 'bg-slate-700'}
           className="mt-2"
         />
         <div className="mt-1.5 flex items-center justify-between text-xs">
@@ -82,7 +82,7 @@ export default function DebtCard({ debt }: { debt: Debt }) {
                   placeholder="Amount"
                   min="0.01"
                   step="0.01"
-                  className="w-full rounded-lg border border-gray-300 px-2 py-1.5 text-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                  className="w-full rounded-lg border border-gray-300 px-2 py-1.5 text-sm focus:border-slate-600 focus:outline-none focus:ring-1 focus:ring-slate-600"
                 />
                 <button
                   onClick={handlePayment}

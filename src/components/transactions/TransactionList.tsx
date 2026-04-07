@@ -1,15 +1,16 @@
 'use client';
 
 import Link from 'next/link';
+import { CreditCard } from 'lucide-react';
 import { Transaction } from '@/lib/types';
 import { formatCurrency, formatDate } from '@/lib/utils';
-import { CATEGORY_ICONS } from '@/lib/constants';
+import CategoryIcon from '@/components/ui/CategoryIcon';
 
 export default function TransactionList({ transactions }: { transactions: Transaction[] }) {
   if (transactions.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-300 py-16 text-center">
-        <span className="text-4xl">💳</span>
+        <CreditCard size={32} className="text-gray-300" />
         <p className="mt-3 text-sm font-medium text-gray-900">No transactions yet</p>
         <p className="mt-1 text-sm text-gray-500">Add your first transaction to get started</p>
       </div>
@@ -22,10 +23,10 @@ export default function TransactionList({ transactions }: { transactions: Transa
         <table className="w-full text-left text-sm">
           <thead>
             <tr className="border-b border-gray-200 bg-gray-50">
-              <th className="px-4 py-3 font-medium text-gray-600">Description</th>
-              <th className="px-4 py-3 font-medium text-gray-600">Category</th>
-              <th className="px-4 py-3 font-medium text-gray-600">Date</th>
-              <th className="px-4 py-3 text-right font-medium text-gray-600">Amount</th>
+              <th className="px-4 py-3 font-medium text-gray-500">Description</th>
+              <th className="px-4 py-3 font-medium text-gray-500">Category</th>
+              <th className="px-4 py-3 font-medium text-gray-500">Date</th>
+              <th className="px-4 py-3 text-right font-medium text-gray-500">Amount</th>
             </tr>
           </thead>
           <tbody>
@@ -37,7 +38,7 @@ export default function TransactionList({ transactions }: { transactions: Transa
                 <td className="px-4 py-3">
                   <Link
                     href={`/transactions/${t.id}`}
-                    className="font-medium text-gray-900 hover:text-indigo-600"
+                    className="font-medium text-gray-900 hover:text-slate-600"
                   >
                     {t.description}
                   </Link>
@@ -46,13 +47,14 @@ export default function TransactionList({ transactions }: { transactions: Transa
                   )}
                 </td>
                 <td className="px-4 py-3">
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-gray-100 px-2.5 py-1 text-xs font-medium text-gray-700">
-                    {CATEGORY_ICONS[t.category]} {t.category}
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-gray-100 px-2.5 py-1 text-xs font-medium text-gray-600">
+                    <CategoryIcon category={t.category} size={13} />
+                    {t.category}
                   </span>
                 </td>
                 <td className="px-4 py-3 text-gray-500">{formatDate(t.date)}</td>
                 <td className={`px-4 py-3 text-right font-semibold ${
-                  t.type === 'income' ? 'text-emerald-600' : 'text-red-600'
+                  t.type === 'income' ? 'text-emerald-600' : 'text-red-500'
                 }`}>
                   {t.type === 'income' ? '+' : '-'}{formatCurrency(t.amount)}
                 </td>

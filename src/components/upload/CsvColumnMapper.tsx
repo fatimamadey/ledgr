@@ -51,7 +51,7 @@ export default function CsvColumnMapper({
             <select
               value={mapping[key] ?? ''}
               onChange={(e) => setMapping({ ...mapping, [key]: e.target.value || null })}
-              className="flex-1 rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+              className="flex-1 rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-slate-600 focus:outline-none focus:ring-1 focus:ring-slate-600"
             >
               <option value="">-- Select column --</option>
               {headers.map((h) => (
@@ -66,7 +66,7 @@ export default function CsvColumnMapper({
       <button
         onClick={() => onMapping(mapping)}
         disabled={!mapping.description || !mapping.amount || !mapping.date}
-        className="mt-4 w-full rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-indigo-700 disabled:bg-gray-300 disabled:cursor-not-allowed"
+        className="mt-4 w-full rounded-lg bg-slate-700 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-slate-800 disabled:bg-gray-300 disabled:cursor-not-allowed"
       >
         Apply Mapping
       </button>

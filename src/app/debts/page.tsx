@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { FileText } from 'lucide-react';
 import PageContainer from '@/components/layout/PageContainer';
 import DebtForm from '@/components/debts/DebtForm';
 import DebtCard from '@/components/debts/DebtCard';
@@ -26,7 +27,7 @@ export default function DebtsPage() {
       action={
         <button
           onClick={() => setShowForm(!showForm)}
-          className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-indigo-700"
+          className="rounded-lg bg-slate-700 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-slate-800"
         >
           {showForm ? 'Hide Form' : '+ Add Debt'}
         </button>
@@ -52,7 +53,7 @@ export default function DebtsPage() {
 
         {debts.length === 0 ? (
           <div className="flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-300 py-16 text-center">
-            <span className="text-4xl">📋</span>
+            <FileText size={32} className="text-gray-300" />
             <p className="mt-3 text-sm font-medium text-gray-900">No debts tracked</p>
             <p className="mt-1 text-sm text-gray-500">Add your first debt to start tracking</p>
           </div>
