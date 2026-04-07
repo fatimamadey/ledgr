@@ -18,7 +18,7 @@ export default function BudgetsPage() {
       action={
         <button
           onClick={() => setShowForm(!showForm)}
-          className="rounded-lg bg-slate-700 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-slate-800"
+          className="rounded-lg bg-[#5c6b5c] px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-[#4d5c4d]"
         >
           {showForm ? 'Hide Form' : '+ Set Budget'}
         </button>

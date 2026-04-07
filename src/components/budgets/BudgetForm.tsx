@@ -72,7 +72,7 @@ export default function BudgetForm({ onClose }: { onClose?: () => void }) {
         <div className="flex gap-2">
           <button
             type="submit"
-            className="flex-1 rounded-lg bg-slate-700 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-slate-800"
+            className="flex-1 rounded-lg bg-[#5c6b5c] px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#4d5c4d]"
           >
             Set Budget
           </button>

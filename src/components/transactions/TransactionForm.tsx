@@ -50,7 +50,7 @@ export default function TransactionForm({ onClose }: { onClose?: () => void }) {
             onClick={() => setType('expense')}
             className={`flex-1 rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
               type === 'expense'
-                ? 'bg-red-50 text-red-700 ring-1 ring-red-200'
+                ? 'bg-[#f8eced] text-[#a85060] ring-1 ring-[#e0b4b9]'
                 : 'bg-gray-50 text-gray-500 hover:bg-gray-100'
             }`}
           >
@@ -61,7 +61,7 @@ export default function TransactionForm({ onClose }: { onClose?: () => void }) {
             onClick={() => setType('income')}
             className={`flex-1 rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
               type === 'income'
-                ? 'bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200'
+                ? 'bg-[#eef3ee] text-[#5a7d5f] ring-1 ring-[#b8d4ba]'
                 : 'bg-gray-50 text-gray-500 hover:bg-gray-100'
             }`}
           >
@@ -137,7 +137,7 @@ export default function TransactionForm({ onClose }: { onClose?: () => void }) {
         <div className="flex gap-2">
           <button
             type="submit"
-            className="flex-1 rounded-lg bg-slate-700 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-slate-800"
+            className="flex-1 rounded-lg bg-[#5c6b5c] px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#4d5c4d]"
           >
             Add Transaction
           </button>

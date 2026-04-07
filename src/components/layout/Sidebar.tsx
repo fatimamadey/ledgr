@@ -32,7 +32,7 @@ function SeedDataButtons() {
       {transactions.length === 0 && (
         <button
           onClick={loadSeed}
-          className="w-full rounded-lg px-3 py-2 text-left text-xs font-medium text-slate-600 hover:bg-slate-100"
+          className="w-full rounded-lg px-3 py-2 text-left text-xs font-medium text-[#6b7b6b] hover:bg-[#e8ece8]"
         >
           Load Sample Data
         </button>
@@ -40,7 +40,7 @@ function SeedDataButtons() {
       {transactions.length > 0 && (
         <button
           onClick={clearAll}
-          className="w-full rounded-lg px-3 py-2 text-left text-xs font-medium text-gray-400 hover:bg-red-50 hover:text-red-600"
+          className="w-full rounded-lg px-3 py-2 text-left text-xs font-medium text-gray-400 hover:bg-[#f8eced] hover:text-[#b8606d]"
         >
           Clear All Data
         </button>
@@ -95,7 +95,7 @@ export default function Sidebar() {
         )}
       >
         <div className="flex h-16 items-center gap-2 border-b border-gray-200 px-6">
-          <span className="text-2xl font-bold tracking-tight text-slate-800">Ledgr</span>
+          <span className="text-2xl font-bold tracking-tight text-[#4d5c4d]">Ledgr</span>
         </div>
 
         <nav className="flex-1 space-y-1 px-3 py-4">
@@ -109,7 +109,7 @@ export default function Sidebar() {
                 className={cn(
                   'flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-150',
                   isActive(item.href)
-                    ? 'bg-slate-100 text-slate-900'
+                    ? 'bg-[#e8ece8] text-[#3d4a3d]'
                     : 'text-gray-500 hover:bg-gray-50 hover:text-gray-800'
                 )}
               >

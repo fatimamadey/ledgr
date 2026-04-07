@@ -75,7 +75,7 @@ export default function TransactionFilters({
         {hasFilters && (
           <button
             onClick={() => onChange({ search: '', category: 'all', type: 'all', dateFrom: '', dateTo: '' })}
-            className="text-sm text-slate-700 hover:text-slate-800"
+            className="text-sm text-[#5c6b5c] hover:text-[#4d5c4d]"
           >
             Clear filters
           </button>

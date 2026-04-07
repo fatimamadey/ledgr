@@ -31,7 +31,7 @@ export default function RootLayout({
       lang="en"
       className={`${roboto.variable} ${robotoMono.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full bg-gray-100">
+      <body className="flex min-h-full" style={{ backgroundColor: '#f7f5f2' }}>
         <StoreProvider>
           <Toaster position="bottom-right" richColors />
           <Sidebar />

@@ -33,7 +33,7 @@ export default function FileUploader({
       className={cn(
         'flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed px-6 py-16 text-center transition-colors',
         isDragging
-          ? 'border-slate-500 bg-slate-100'
+          ? 'border-slate-500 bg-[#e8ece8]'
           : 'border-gray-300 bg-white hover:border-gray-400 hover:bg-gray-50'
       )}
     >

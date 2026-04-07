@@ -27,7 +27,7 @@ export default function DebtsPage() {
       action={
         <button
           onClick={() => setShowForm(!showForm)}
-          className="rounded-lg bg-slate-700 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-slate-800"
+          className="rounded-lg bg-[#5c6b5c] px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-[#4d5c4d]"
         >
           {showForm ? 'Hide Form' : '+ Add Debt'}
         </button>
@@ -43,10 +43,10 @@ export default function DebtsPage() {
         {debts.length > 0 && (
           <div className="flex gap-4 text-sm">
             <span className="text-gray-500">
-              Total owed: <span className="font-semibold text-red-600">{formatCurrency(totalOwed)}</span>
+              Total owed: <span className="font-semibold text-[#b8606d]">{formatCurrency(totalOwed)}</span>
             </span>
             <span className="text-gray-500">
-              Owed to me: <span className="font-semibold text-emerald-600">{formatCurrency(totalOwedToMe)}</span>
+              Owed to me: <span className="font-semibold text-[#6b8f71]">{formatCurrency(totalOwedToMe)}</span>
             </span>
           </div>
         )}

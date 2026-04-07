@@ -109,7 +109,7 @@ export default function SpendingPieChart() {
             key={m}
             onClick={() => setIndex(i)}
             className={`h-1.5 rounded-full transition-all ${
-              i === index ? 'w-4 bg-slate-700' : 'w-1.5 bg-gray-300 hover:bg-gray-400'
+              i === index ? 'w-4 bg-[#5c6b5c]' : 'w-1.5 bg-gray-300 hover:bg-gray-400'
             }`}
           />
         ))}

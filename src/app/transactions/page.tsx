@@ -29,13 +29,13 @@ export default function TransactionsPage() {
         <div className="flex gap-2">
           <button
             onClick={() => setShowUpload(true)}
-            className="rounded-lg border border-slate-300 bg-slate-100 px-4 py-2 text-sm font-medium text-slate-800 transition-colors hover:bg-slate-200"
+            className="rounded-lg border border-[#c4cdc4] bg-[#e8ece8] px-4 py-2 text-sm font-medium text-[#4d5c4d] transition-colors hover:bg-[#dce1dc]"
           >
             Import CSV
           </button>
           <button
             onClick={() => setShowForm(!showForm)}
-            className="rounded-lg bg-slate-700 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-slate-800"
+            className="rounded-lg bg-[#5c6b5c] px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-[#4d5c4d]"
           >
             {showForm ? 'Hide Form' : '+ Add Transaction'}
           </button>

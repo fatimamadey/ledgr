@@ -13,7 +13,7 @@ export default function RecentTransactions() {
     <Card>
       <div className="mb-4 flex items-center justify-between">
         <h3 className="text-sm font-medium text-gray-500">Recent Transactions</h3>
-        <Link href="/transactions" className="text-xs font-medium text-slate-600 hover:text-slate-800">
+        <Link href="/transactions" className="text-xs font-medium text-[#6b7b6b] hover:text-[#4d5c4d]">
           View all
         </Link>
       </div>
@@ -39,7 +39,7 @@ export default function RecentTransactions() {
               </div>
               <span
                 className={`text-sm font-semibold ${
-                  t.type === 'income' ? 'text-emerald-600' : 'text-red-500'
+                  t.type === 'income' ? 'text-[#6b8f71]' : 'text-[#c4727f]'
                 }`}
               >
                 {t.type === 'income' ? '+' : '-'}{formatCurrency(t.amount)}

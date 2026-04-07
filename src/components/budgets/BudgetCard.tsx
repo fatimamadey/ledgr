@@ -22,9 +22,9 @@ export default function BudgetCard({ budget }: { budget: Budget }) {
   const { spent, percentage, remaining } = progress;
 
   const getStatus = () => {
-    if (percentage >= 100) return { label: 'Over Budget', variant: 'danger' as const, barColor: 'bg-red-500' };
+    if (percentage >= 100) return { label: 'Over Budget', variant: 'danger' as const, barColor: 'bg-[#c4727f]' };
     if (percentage >= 75) return { label: 'Warning', variant: 'warning' as const, barColor: 'bg-amber-500' };
-    return { label: 'On Track', variant: 'success' as const, barColor: 'bg-emerald-500' };
+    return { label: 'On Track', variant: 'success' as const, barColor: 'bg-[#6b8f71]' };
   };
 
   const status = getStatus();
@@ -48,7 +48,7 @@ export default function BudgetCard({ budget }: { budget: Budget }) {
         </div>
         <ProgressBar percentage={percentage} color={status.barColor} className="mt-2" />
         <div className="mt-1.5 flex items-center justify-between text-xs">
-          <span className={remaining >= 0 ? 'text-gray-500' : 'text-red-600 font-medium'}>
+          <span className={remaining >= 0 ? 'text-gray-500' : 'text-[#b8606d] font-medium'}>
             {remaining >= 0
               ? `${formatCurrency(remaining)} remaining`
               : `${formatCurrency(Math.abs(remaining))} over`}
@@ -60,7 +60,7 @@ export default function BudgetCard({ budget }: { budget: Budget }) {
       <div className="mt-4">
         <button
           onClick={() => setShowDeleteConfirm(true)}
-          className="text-xs text-gray-400 hover:text-red-500"
+          className="text-xs text-gray-400 hover:text-[#c4727f]"
         >
           Remove budget
         </button>

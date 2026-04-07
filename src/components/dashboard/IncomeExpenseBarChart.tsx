@@ -44,8 +44,8 @@ export default function IncomeExpenseBarChart() {
               }}
             />
             <Legend wrapperStyle={{ fontSize: '12px' }} />
-            <Bar dataKey="income" name="Income" fill="#10b981" radius={[4, 4, 0, 0]} animationDuration={800} />
-            <Bar dataKey="expenses" name="Expenses" fill="#f43f5e" radius={[4, 4, 0, 0]} animationDuration={800} />
+            <Bar dataKey="income" name="Income" fill="#6b8f71" radius={[4, 4, 0, 0]} animationDuration={800} />
+            <Bar dataKey="expenses" name="Expenses" fill="#c4727f" radius={[4, 4, 0, 0]} animationDuration={800} />
           </BarChart>
         </ResponsiveContainer>
       </div>

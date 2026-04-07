@@ -40,7 +40,7 @@ export default function TransactionList({ transactions }: { transactions: Transa
                   <td className="px-4 py-3">
                     <Link
                       href={`/transactions/${t.id}`}
-                      className="font-medium text-gray-900 hover:text-slate-600"
+                      className="font-medium text-gray-900 hover:text-[#6b7b6b]"
                     >
                       {t.description}
                     </Link>
@@ -56,7 +56,7 @@ export default function TransactionList({ transactions }: { transactions: Transa
                   </td>
                   <td className="px-4 py-3 text-gray-500">{formatDate(t.date)}</td>
                   <td className={`px-4 py-3 text-right font-semibold ${
-                    t.type === 'income' ? 'text-emerald-600' : 'text-red-500'
+                    t.type === 'income' ? 'text-[#6b8f71]' : 'text-[#c4727f]'
                   }`}>
                     {t.type === 'income' ? '+' : '-'}{formatCurrency(t.amount)}
                   </td>
@@ -85,7 +85,7 @@ export default function TransactionList({ transactions }: { transactions: Transa
               </div>
             </div>
             <span className={`ml-3 shrink-0 text-sm font-semibold ${
-              t.type === 'income' ? 'text-emerald-600' : 'text-red-500'
+              t.type === 'income' ? 'text-[#6b8f71]' : 'text-[#c4727f]'
             }`}>
               {t.type === 'income' ? '+' : '-'}{formatCurrency(t.amount)}
             </span>

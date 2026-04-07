@@ -115,7 +115,7 @@ export default function UploadModal({
   };
 
   const stepLabel = (s: Step, current: Step) =>
-    s === current ? 'text-slate-700 font-medium' : 'text-gray-400';
+    s === current ? 'text-[#5c6b5c] font-medium' : 'text-gray-400';
 
   return (
     <Modal
@@ -136,7 +136,7 @@ export default function UploadModal({
       </div>
 
       {error && (
-        <div className="mb-4 rounded-lg bg-red-50 px-4 py-3 text-sm text-red-600">
+        <div className="mb-4 rounded-lg bg-[#f8eced] px-4 py-3 text-sm text-[#b8606d]">
           {error}
         </div>
       )}
@@ -173,8 +173,8 @@ export default function UploadModal({
 
       {step === 'done' && (
         <div className="py-8 text-center">
-          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100">
-            <svg className="h-6 w-6 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#dce8dd]">
+            <svg className="h-6 w-6 text-[#6b8f71]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </div>
@@ -193,7 +193,7 @@ export default function UploadModal({
             </button>
             <button
               onClick={handleClose}
-              className="rounded-lg bg-slate-700 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800"
+              className="rounded-lg bg-[#5c6b5c] px-4 py-2 text-sm font-medium text-white hover:bg-[#4d5c4d]"
             >
               Done
             </button>

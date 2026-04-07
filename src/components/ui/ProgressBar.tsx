@@ -2,7 +2,7 @@ import { cn } from '@/lib/utils';
 
 export default function ProgressBar({
   percentage,
-  color = 'bg-slate-700',
+  color = 'bg-[#5c6b5c]',
   className,
 }: {
   percentage: number;

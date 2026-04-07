@@ -42,8 +42,8 @@ export default function DebtCard({ debt }: { debt: Debt }) {
         <span
           className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${
             debt.direction === 'owed_to'
-              ? 'bg-red-50 text-red-700'
-              : 'bg-emerald-50 text-emerald-700'
+              ? 'bg-[#f8eced] text-[#a85060]'
+              : 'bg-[#eef3ee] text-[#5a7d5f]'
           }`}
         >
           {debt.direction === 'owed_to' ? 'I owe' : 'Owed to me'}
@@ -59,11 +59,11 @@ export default function DebtCard({ debt }: { debt: Debt }) {
         </div>
         <ProgressBar
           percentage={percentage}
-          color={isPaidOff ? 'bg-emerald-500' : 'bg-slate-700'}
+          color={isPaidOff ? 'bg-[#6b8f71]' : 'bg-[#5c6b5c]'}
           className="mt-2"
         />
         <div className="mt-1.5 flex items-center justify-between text-xs">
-          <span className={isPaidOff ? 'text-emerald-600 font-medium' : 'text-gray-500'}>
+          <span className={isPaidOff ? 'text-[#6b8f71] font-medium' : 'text-gray-500'}>
             {isPaidOff ? 'Paid off!' : `${formatCurrency(remaining)} remaining`}
           </span>
           <span className="text-gray-400">{Math.round(percentage)}%</span>
@@ -90,7 +90,7 @@ export default function DebtCard({ debt }: { debt: Debt }) {
                 />
                 <button
                   onClick={handlePayment}
-                  className="rounded-lg bg-emerald-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-emerald-700"
+                  className="rounded-lg bg-[#6b8f71] px-3 py-1.5 text-xs font-medium text-white hover:bg-[#5a7d5f]"
                 >
                   Pay
                 </button>
@@ -104,7 +104,7 @@ export default function DebtCard({ debt }: { debt: Debt }) {
             ) : (
               <button
                 onClick={() => setShowPayment(true)}
-                className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-1.5 text-xs font-medium text-emerald-700 hover:bg-emerald-100"
+                className="rounded-lg border border-[#b8d4ba] bg-[#eef3ee] px-3 py-1.5 text-xs font-medium text-[#5a7d5f] hover:bg-[#dce8dd]"
               >
                 Make Payment
               </button>
@@ -113,7 +113,7 @@ export default function DebtCard({ debt }: { debt: Debt }) {
         )}
         <button
           onClick={() => setShowDeleteConfirm(true)}
-          className="ml-auto text-xs text-gray-400 hover:text-red-500"
+          className="ml-auto text-xs text-gray-400 hover:text-[#c4727f]"
         >
           Delete
         </button>

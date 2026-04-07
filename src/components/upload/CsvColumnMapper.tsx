@@ -66,7 +66,7 @@ export default function CsvColumnMapper({
       <button
         onClick={() => onMapping(mapping)}
         disabled={!mapping.description || !mapping.amount || !mapping.date}
-        className="mt-4 w-full rounded-lg bg-slate-700 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-slate-800 disabled:bg-gray-300 disabled:cursor-not-allowed"
+        className="mt-4 w-full rounded-lg bg-[#5c6b5c] px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#4d5c4d] disabled:bg-gray-300 disabled:cursor-not-allowed"
       >
         Apply Mapping
       </button>

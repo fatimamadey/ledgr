@@ -36,8 +36,8 @@ export default function ConfirmDialog({
           }}
           className={`rounded-lg px-4 py-2 text-sm font-medium text-white ${
             variant === 'danger'
-              ? 'bg-red-600 hover:bg-red-700'
-              : 'bg-slate-700 hover:bg-slate-800'
+              ? 'bg-[#c4727f] hover:bg-[#b8606d]'
+              : 'bg-[#5c6b5c] hover:bg-[#4d5c4d]'
           }`}
         >
           {confirmLabel}

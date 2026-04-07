@@ -50,13 +50,13 @@ export default function TransactionPreview({
                     type="checkbox"
                     checked={t.selected}
                     onChange={() => onToggle(i)}
-                    className="h-4 w-4 rounded border-gray-300 text-slate-700 focus:ring-slate-600"
+                    className="h-4 w-4 rounded border-gray-300 text-[#5c6b5c] focus:ring-slate-600"
                   />
                 </td>
                 <td className="px-3 py-2 text-gray-900 max-w-[180px] truncate">{t.description}</td>
                 <td className="px-3 py-2 text-gray-500 whitespace-nowrap">{t.date}</td>
                 <td className={`px-3 py-2 text-right font-semibold whitespace-nowrap ${
-                  t.type === 'income' ? 'text-emerald-600' : 'text-red-600'
+                  t.type === 'income' ? 'text-[#6b8f71]' : 'text-[#b8606d]'
                 }`}>
                   {t.type === 'income' ? '+' : '-'}{formatCurrency(t.amount)}
                 </td>
@@ -66,8 +66,8 @@ export default function TransactionPreview({
                     onChange={(e) => onUpdate(i, 'type', e.target.value)}
                     className={`rounded border px-1.5 py-0.5 text-xs font-medium ${
                       t.type === 'income'
-                        ? 'border-emerald-200 bg-emerald-50 text-emerald-700'
-                        : 'border-red-200 bg-red-50 text-red-700'
+                        ? 'border-[#b8d4ba] bg-[#eef3ee] text-[#5a7d5f]'
+                        : 'border-[#e0b4b9] bg-[#f8eced] text-[#a85060]'
                     }`}
                   >
                     <option value="expense">expense</option>
@@ -95,7 +95,7 @@ export default function TransactionPreview({
         <button
           onClick={onConfirm}
           disabled={selected.length === 0}
-          className="flex-1 rounded-lg bg-slate-700 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-slate-800 disabled:bg-gray-300 disabled:cursor-not-allowed"
+          className="flex-1 rounded-lg bg-[#5c6b5c] px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#4d5c4d] disabled:bg-gray-300 disabled:cursor-not-allowed"
         >
           Import {selected.length} Transaction{selected.length !== 1 ? 's' : ''}
         </button>

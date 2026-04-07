@@ -78,7 +78,7 @@ export default function TransactionDetailPage({
             <Search size={32} className="mx-auto text-gray-300" />
             <p className="mt-3 text-sm font-medium text-gray-900">Transaction not found</p>
             <p className="mt-1 text-sm text-gray-500">This transaction may have been deleted.</p>
-            <Link href="/transactions" className="mt-4 inline-block text-sm font-medium text-slate-600 hover:text-slate-800">
+            <Link href="/transactions" className="mt-4 inline-block text-sm font-medium text-[#6b7b6b] hover:text-[#4d5c4d]">
               Back to Transactions
             </Link>
           </div>
@@ -103,7 +103,7 @@ export default function TransactionDetailPage({
               </button>
               <button
                 onClick={() => setShowDeleteConfirm(true)}
-                className="inline-flex items-center gap-1.5 rounded-lg border border-red-200 px-3 py-2 text-sm font-medium text-red-600 hover:bg-red-50"
+                className="inline-flex items-center gap-1.5 rounded-lg border border-[#e0b4b9] px-3 py-2 text-sm font-medium text-[#b8606d] hover:bg-[#f8eced]"
               >
                 <Trash2 size={14} />
                 Delete
@@ -127,11 +127,11 @@ export default function TransactionDetailPage({
               <div className="space-y-4">
                 <div className="flex gap-2">
                   <button type="button" onClick={() => setEditType('expense')}
-                    className={`flex-1 rounded-lg px-4 py-2 text-sm font-medium transition-colors ${editType === 'expense' ? 'bg-red-50 text-red-700 ring-1 ring-red-200' : 'bg-gray-50 text-gray-500 hover:bg-gray-100'}`}>
+                    className={`flex-1 rounded-lg px-4 py-2 text-sm font-medium transition-colors ${editType === 'expense' ? 'bg-[#f8eced] text-[#a85060] ring-1 ring-[#e0b4b9]' : 'bg-gray-50 text-gray-500 hover:bg-gray-100'}`}>
                     Expense
                   </button>
                   <button type="button" onClick={() => setEditType('income')}
-                    className={`flex-1 rounded-lg px-4 py-2 text-sm font-medium transition-colors ${editType === 'income' ? 'bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200' : 'bg-gray-50 text-gray-500 hover:bg-gray-100'}`}>
+                    className={`flex-1 rounded-lg px-4 py-2 text-sm font-medium transition-colors ${editType === 'income' ? 'bg-[#eef3ee] text-[#5a7d5f] ring-1 ring-[#b8d4ba]' : 'bg-gray-50 text-gray-500 hover:bg-gray-100'}`}>
                     Income
                   </button>
                 </div>
@@ -166,7 +166,7 @@ export default function TransactionDetailPage({
                 </div>
                 <div className="flex gap-2">
                   <button onClick={saveEdit}
-                    className="rounded-lg bg-slate-700 px-4 py-2.5 text-sm font-medium text-white hover:bg-slate-800">
+                    className="rounded-lg bg-[#5c6b5c] px-4 py-2.5 text-sm font-medium text-white hover:bg-[#4d5c4d]">
                     Save Changes
                   </button>
                   <button onClick={() => setEditing(false)}
@@ -194,12 +194,12 @@ export default function TransactionDetailPage({
                     <span className="inline-flex items-center rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-600">
                       {formatDate(transaction.date)}
                     </span>
-                    <span className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-medium ${transaction.type === 'income' ? 'bg-emerald-50 text-emerald-700' : 'bg-red-50 text-red-600'}`}>
+                    <span className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-medium ${transaction.type === 'income' ? 'bg-[#eef3ee] text-[#5a7d5f]' : 'bg-[#f8eced] text-[#b8606d]'}`}>
                       {transaction.type === 'income' ? 'Income' : 'Expense'}
                     </span>
                   </div>
                 </div>
-                <span className={`text-2xl font-bold ${transaction.type === 'income' ? 'text-emerald-600' : 'text-red-500'}`}>
+                <span className={`text-2xl font-bold ${transaction.type === 'income' ? 'text-[#6b8f71]' : 'text-[#c4727f]'}`}>
                   {transaction.type === 'income' ? '+' : '-'}{formatCurrency(transaction.amount)}
                 </span>
               </div>
@@ -234,7 +234,7 @@ export default function TransactionDetailPage({
                       <p className="text-sm font-medium text-gray-900">{t.description}</p>
                       <p className="text-xs text-gray-400">{formatDate(t.date)}</p>
                     </div>
-                    <span className={`text-sm font-semibold ${t.type === 'income' ? 'text-emerald-600' : 'text-red-500'}`}>
+                    <span className={`text-sm font-semibold ${t.type === 'income' ? 'text-[#6b8f71]' : 'text-[#c4727f]'}`}>
                       {t.type === 'income' ? '+' : '-'}{formatCurrency(t.amount)}
                     </span>
                   </Link>

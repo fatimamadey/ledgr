@@ -15,31 +15,31 @@ export const CATEGORIES: Category[] = [
 ];
 
 export const CHART_COLORS = [
-  '#64748b', // slate
-  '#6b8aad', // steel blue
-  '#8b9fba', // light steel
-  '#a3b8cc', // powder
-  '#7c9885', // sage
-  '#b0a090', // tan
-  '#8b7bab', // muted purple
-  '#6b9e9e', // muted teal
-  '#a0855b', // muted amber
-  '#b07b7b', // muted rose
-  '#7b9a6b', // muted green
+  '#8b7355', // warm brown
+  '#a08b6e', // tan
+  '#b5a48a', // sand
+  '#c4b8a0', // khaki
+  '#7b8f7b', // sage
+  '#9c7b7b', // dusty rose
+  '#7a8a8a', // muted teal
+  '#a09078', // clay
+  '#8a7a6a', // walnut
+  '#9b8b78', // taupe
+  '#7b8570', // olive
 ];
 
 export const CATEGORY_COLORS: Record<Category, string> = {
-  Food: '#64748b',
-  Transport: '#6b8aad',
-  Housing: '#8b9fba',
-  Entertainment: '#a3b8cc',
-  Shopping: '#7c9885',
-  Health: '#6b9e9e',
-  Income: '#7b9a6b',
-  Subscriptions: '#b07b7b',
-  Utilities: '#b0a090',
-  Education: '#8b7bab',
-  Other: '#a0855b',
+  Food: '#8b7355',
+  Transport: '#7a8a8a',
+  Housing: '#a08b6e',
+  Entertainment: '#9c7b7b',
+  Shopping: '#b5a48a',
+  Health: '#7b8f7b',
+  Income: '#6b8f71',
+  Subscriptions: '#a09078',
+  Utilities: '#8a7a6a',
+  Education: '#9b8b78',
+  Other: '#c4b8a0',
 };
 
 export const CATEGORY_ICON_NAMES: Record<Category, string> = {

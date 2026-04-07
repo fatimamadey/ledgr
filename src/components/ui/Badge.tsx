@@ -3,9 +3,9 @@ import { cn } from '@/lib/utils';
 type BadgeVariant = 'success' | 'warning' | 'danger';
 
 const variants: Record<BadgeVariant, string> = {
-  success: 'bg-emerald-50 text-emerald-700',
+  success: 'bg-[#eef3ee] text-[#5a7d5f]',
   warning: 'bg-amber-50 text-amber-700',
-  danger: 'bg-red-50 text-red-700',
+  danger: 'bg-[#f8eced] text-[#a85060]',
 };
 
 export default function Badge({
