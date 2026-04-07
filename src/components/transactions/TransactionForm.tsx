@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { toast } from 'sonner';
 import { useLedgrStore } from '@/store';
 import { CATEGORIES } from '@/lib/constants';
 import { Category, TransactionType } from '@/lib/types';
@@ -34,6 +35,7 @@ export default function TransactionForm({ onClose }: { onClose?: () => void }) {
     setCategory('Other');
     setType('expense');
     setNotes('');
+    toast.success('Transaction added');
     onClose?.();
   };
 
@@ -75,6 +77,7 @@ export default function TransactionForm({ onClose }: { onClose?: () => void }) {
             onChange={(e) => setDescription(e.target.value)}
             placeholder="e.g. Grocery shopping"
             required
+            autoFocus
             className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-slate-600 focus:outline-none focus:ring-1 focus:ring-slate-600"
           />
         </div>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto, Roboto_Mono } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "sonner";
 import Sidebar from "@/components/layout/Sidebar";
 import StoreProvider from "@/store/StoreProvider";
 
@@ -32,6 +33,7 @@ export default function RootLayout({
     >
       <body className="flex min-h-full bg-gray-100">
         <StoreProvider>
+          <Toaster position="bottom-right" richColors />
           <Sidebar />
           <main className="flex-1 lg:ml-64">
             {children}

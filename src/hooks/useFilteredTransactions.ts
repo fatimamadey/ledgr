@@ -9,6 +9,11 @@ export function useFilteredTransactions(filters: TransactionFilterState): Transa
   return useMemo(() => {
     let result = [...transactions];
 
+    if (filters.search) {
+      const q = filters.search.toLowerCase();
+      result = result.filter((t) => t.description.toLowerCase().includes(q));
+    }
+
     if (filters.type !== 'all') {
       result = result.filter((t) => t.type === filters.type);
     }

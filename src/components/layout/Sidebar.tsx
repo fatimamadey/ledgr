@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { LayoutDashboard, ArrowLeftRight, FileText, Target } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useState } from 'react';
+import { toast } from 'sonner';
 import { useLedgrStore } from '@/store';
 import { generateSeedTransactions, generateSeedDebts, generateSeedBudgets } from '@/lib/seed';
 
@@ -18,10 +19,12 @@ function SeedDataButtons() {
     addTransactions(generateSeedTransactions());
     generateSeedDebts().forEach((d) => addDebt(d));
     generateSeedBudgets().forEach((b) => setBudget(b));
+    toast.success('Sample data loaded');
   };
 
   const clearAll = () => {
     useLedgrStore.setState({ transactions: [], debts: [], budgets: [] });
+    toast.success('All data cleared');
   };
 
   return (
@@ -66,6 +69,7 @@ export default function Sidebar() {
     <>
       <button
         onClick={() => setMobileOpen(!mobileOpen)}
+        aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
         className="fixed top-4 left-4 z-50 rounded-lg bg-white p-2 shadow-md lg:hidden"
       >
         <svg className="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">

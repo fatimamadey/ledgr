@@ -7,11 +7,13 @@ Ledgr is a multi-page Next.js financial tracker app that lets users track transa
 
 ## Tech Stack
 - **Next.js 16** (App Router, TypeScript, `src/` directory)
-- **Tailwind CSS v4** — light mode clean theme (white/gray, indigo-600 accent)
-- **Recharts** — charts with built-in animations
+- **Tailwind CSS v4** — light gray background, slate/blue-gray accents
+- **Recharts** — charts with muted color palette and built-in animations
 - **Zustand** — client-side state with `persist` middleware (localStorage)
 - **papaparse** — CSV parsing (client-side)
-- **pdf-parse v4** — PDF parsing (server-side via API route, uses PDFParse class API)
+- **lucide-react** — outlined icons (1px stroke)
+- **sonner** — toast notifications
+- **Roboto / Roboto Mono** — fonts via next/font/google
 
 ## Commands
 - `npm run dev` — Start development server
@@ -21,34 +23,37 @@ Ledgr is a multi-page Next.js financial tracker app that lets users track transa
 ## Routes
 | Route | Description |
 |---|---|
-| `/` | Dashboard — summary cards, pie chart, bar chart, recent transactions |
-| `/transactions` | Add/view/filter transactions |
-| `/transactions/[id]` | Transaction detail with category chart and similar transactions |
-| `/debts` | Debt tracker with progress bars and inline payments |
+| `/` | Dashboard — summary cards, spending carousel (6 months), bar chart, recent transactions |
+| `/transactions` | Add/view/filter/search transactions, CSV import via modal |
+| `/transactions/[id]` | Transaction detail with edit/delete, category chart, similar transactions |
+| `/debts` | Debt tracker with progress bars, inline payments, delete confirmation |
 | `/budgets` | Monthly spending limits per category with auto-calculated progress |
-| `/upload` | Import transactions from CSV or PDF bank statements |
-| `/api/parse-pdf` | Server-side PDF parsing endpoint |
 
 ## Architecture
-- **State**: Zustand store at `src/store/index.ts` with `persist` middleware. All derived data computed in `src/store/selectors.ts`.
-- **Layout**: Sidebar navigation in root layout, `PageContainer` wrapper for consistent page structure.
+- **State**: Zustand store at `src/store/index.ts` with `persist` middleware. All derived data computed in `src/store/selectors.ts` using `useMemo`.
+- **Layout**: Sidebar navigation (Lucide icons) in root layout, `PageContainer` wrapper for consistent page structure.
 - **Components**: Organized by feature (`dashboard/`, `transactions/`, `debts/`, `budgets/`, `upload/`, `ui/`).
-- **Parsers**: CSV via papaparse (client-side), PDF via pdf-parse (server-side API route with dynamic import to avoid build issues with pdfjs-dist).
+- **CSV Import**: Modal on transactions page. papaparse (client-side) → column mapper → preview with editable type/category → confirm.
+- **Category Detection**: `src/lib/categorize.ts` keyword-matches descriptions to categories and income/expense type.
+- **Toasts**: sonner `<Toaster />` in root layout. All actions show success feedback.
+- **Confirmations**: `ConfirmDialog` component wraps all delete actions.
 
 ## Key Patterns
-- `params` is a Promise in Next.js 15+ — use `use(params)` in client components, `await params` in server components.
-- Recharts `Tooltip` formatter must use `(value) => formatCurrency(Number(value))` to avoid type errors.
-- pdf-parse v4 uses `new PDFParse({ data })` class API, not the old `pdfParse(buffer)` function.
-- `StoreProvider` wraps children and delays rendering until after hydration to prevent SSR/client mismatch.
+- `params` is a Promise in Next.js 15+ — use `use(params)` in client components.
+- Recharts `Tooltip` formatter: `(value) => formatCurrency(Number(value))`.
+- `StoreProvider` delays rendering until after hydration to prevent SSR/client mismatch.
+- Date labels use `new Date(year, month-1, 1)` (local time) to avoid timezone bugs with `new Date('YYYY-MM-01')` (UTC).
 
 ## Categories
 Food, Transport, Housing, Entertainment, Shopping, Health, Income, Subscriptions, Utilities, Education, Other
 
-## Theme Colors
-- Background: white / gray-50
-- Surface: white / gray-100
-- Text: gray-900 / gray-600
-- Accent: indigo-600
-- Income: emerald-500
-- Expenses: red-500
-- Charts: `['#6366f1', '#3b82f6', '#8b5cf6', '#0ea5e9', '#a78bfa', '#38bdf8']`
+## Theme
+- **Font**: Roboto (300/400/500/700)
+- **Icons**: lucide-react (outlined, 1px stroke)
+- **Background**: gray-100
+- **Surface**: white
+- **Text**: slate-900 / gray-500
+- **Accent**: slate-700 (buttons, active nav, focus rings)
+- **Income**: emerald-600
+- **Expenses**: red-500
+- **Charts**: muted palette `['#64748b', '#6b8aad', '#8b9fba', '#a3b8cc', '#7c9885', '#b0a090']`

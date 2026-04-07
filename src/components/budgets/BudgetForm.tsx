@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { toast } from 'sonner';
 import { useLedgrStore } from '@/store';
 import { CATEGORIES } from '@/lib/constants';
 import { Category } from '@/lib/types';
@@ -23,6 +24,7 @@ export default function BudgetForm({ onClose }: { onClose?: () => void }) {
 
     setBudget({ category, monthlyLimit: parseFloat(monthlyLimit) });
     setMonthlyLimit('');
+    toast.success('Budget set for ' + category);
     onClose?.();
   };
 

@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+import { toast } from 'sonner';
 import { Budget } from '@/lib/types';
 import { formatCurrency } from '@/lib/utils';
 import CategoryIcon from '@/components/ui/CategoryIcon';
@@ -8,10 +10,12 @@ import { useLedgrStore } from '@/store';
 import Card from '@/components/ui/Card';
 import ProgressBar from '@/components/ui/ProgressBar';
 import Badge from '@/components/ui/Badge';
+import ConfirmDialog from '@/components/ui/ConfirmDialog';
 
 export default function BudgetCard({ budget }: { budget: Budget }) {
   const progress = useBudgetProgress(budget.category);
   const deleteBudget = useLedgrStore((s) => s.deleteBudget);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
   if (!progress) return null;
 
@@ -55,12 +59,23 @@ export default function BudgetCard({ budget }: { budget: Budget }) {
 
       <div className="mt-4">
         <button
-          onClick={() => deleteBudget(budget.id)}
+          onClick={() => setShowDeleteConfirm(true)}
           className="text-xs text-gray-400 hover:text-red-500"
         >
           Remove budget
         </button>
       </div>
+
+      <ConfirmDialog
+        open={showDeleteConfirm}
+        onClose={() => setShowDeleteConfirm(false)}
+        onConfirm={() => {
+          deleteBudget(budget.id);
+          toast.success('Budget removed');
+        }}
+        title="Remove budget?"
+        message={`This will remove the ${budget.category} budget limit.`}
+      />
     </Card>
   );
 }

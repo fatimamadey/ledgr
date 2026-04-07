@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { toast } from 'sonner';
 import { useLedgrStore } from '@/store';
 import Card from '@/components/ui/Card';
 
@@ -32,6 +33,7 @@ export default function DebtForm({ onClose }: { onClose?: () => void }) {
     setTotalAmount('');
     setPaidAmount('');
     setDueDate('');
+    toast.success('Debt added');
     onClose?.();
   };
 
@@ -71,6 +73,7 @@ export default function DebtForm({ onClose }: { onClose?: () => void }) {
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="e.g. Student Loan"
+            autoFocus
             required
             className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-slate-600 focus:outline-none focus:ring-1 focus:ring-slate-600"
           />

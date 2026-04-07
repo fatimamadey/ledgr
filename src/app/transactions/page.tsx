@@ -12,6 +12,7 @@ export default function TransactionsPage() {
   const [showForm, setShowForm] = useState(false);
   const [showUpload, setShowUpload] = useState(false);
   const [filters, setFilters] = useState<TransactionFilterState>({
+    search: '',
     category: 'all',
     type: 'all',
     dateFrom: '',

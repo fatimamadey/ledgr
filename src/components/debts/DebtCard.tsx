@@ -1,17 +1,20 @@
 'use client';
 
 import { useState } from 'react';
+import { toast } from 'sonner';
 import { Debt } from '@/lib/types';
 import { formatCurrency, formatDate } from '@/lib/utils';
 import { useLedgrStore } from '@/store';
 import Card from '@/components/ui/Card';
 import ProgressBar from '@/components/ui/ProgressBar';
+import ConfirmDialog from '@/components/ui/ConfirmDialog';
 
 export default function DebtCard({ debt }: { debt: Debt }) {
   const updateDebt = useLedgrStore((s) => s.updateDebt);
   const deleteDebt = useLedgrStore((s) => s.deleteDebt);
   const [paymentAmount, setPaymentAmount] = useState('');
   const [showPayment, setShowPayment] = useState(false);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
   const percentage = debt.totalAmount > 0 ? (debt.paidAmount / debt.totalAmount) * 100 : 0;
   const remaining = debt.totalAmount - debt.paidAmount;
@@ -23,6 +26,7 @@ export default function DebtCard({ debt }: { debt: Debt }) {
     updateDebt(debt.id, { paidAmount: Math.min(debt.paidAmount + amount, debt.totalAmount) });
     setPaymentAmount('');
     setShowPayment(false);
+    toast.success(`Payment of $${amount.toFixed(2)} recorded`);
   };
 
   return (
@@ -108,12 +112,23 @@ export default function DebtCard({ debt }: { debt: Debt }) {
           </>
         )}
         <button
-          onClick={() => deleteDebt(debt.id)}
+          onClick={() => setShowDeleteConfirm(true)}
           className="ml-auto text-xs text-gray-400 hover:text-red-500"
         >
           Delete
         </button>
       </div>
+
+      <ConfirmDialog
+        open={showDeleteConfirm}
+        onClose={() => setShowDeleteConfirm(false)}
+        onConfirm={() => {
+          deleteDebt(debt.id);
+          toast.success('Debt deleted');
+        }}
+        title="Delete debt?"
+        message={`This will permanently remove "${debt.name}". This action cannot be undone.`}
+      />
     </Card>
   );
 }
