@@ -10,11 +10,11 @@ export default function PageContainer({
   children: React.ReactNode;
 }) {
   return (
-    <div className="animate-fade-in p-6 lg:p-8">
+    <div className="animate-fade-in p-6 pt-16 lg:p-8 lg:pt-8">
       <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">{title}</h1>
-          {subtitle && <p className="mt-1 text-sm text-gray-500">{subtitle}</p>}
+          <h1 className="text-2xl font-bold text-foreground">{title}</h1>
+          {subtitle && <p className="mt-1 text-sm text-muted">{subtitle}</p>}
         </div>
         {action && <div>{action}</div>}
       </div>

@@ -1,11 +1,33 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #f7f5f2;
   --foreground: #3d3530;
   --accent: #5c6b5c;
   --income: #6b8f71;
   --expense: #c4727f;
+  --surface: #ffffff;
+  --surface-hover: #f9fafb;
+  --border: #e5e7eb;
+  --border-light: #f3f4f6;
+  --muted: #6b7280;
+  --muted-light: #9ca3af;
+}
+
+.dark {
+  --background: #1c1917;
+  --foreground: #e7e5e4;
+  --accent: #7a8f7a;
+  --income: #81a887;
+  --expense: #d4848f;
+  --surface: #292524;
+  --surface-hover: #33302e;
+  --border: #44403c;
+  --border-light: #3a3633;
+  --muted: #a8a29e;
+  --muted-light: #78716c;
 }
 
 @theme inline {
@@ -14,6 +36,12 @@
   --color-accent: var(--accent);
   --color-income: var(--income);
   --color-expense: var(--expense);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-border: var(--border);
+  --color-border-light: var(--border-light);
+  --color-muted: var(--muted);
+  --color-muted-light: var(--muted-light);
   --font-sans: var(--font-roboto);
   --font-mono: var(--font-roboto-mono);
 }

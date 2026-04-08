@@ -29,7 +29,7 @@ export default function TransactionsPage() {
         <div className="flex gap-2">
           <button
             onClick={() => setShowUpload(true)}
-            className="rounded-lg border border-[#c4cdc4] bg-[#e8ece8] px-4 py-2 text-sm font-medium text-[#4d5c4d] transition-colors hover:bg-[#dce1dc]"
+            className="rounded-lg border border-border bg-surface-hover px-4 py-2 text-sm font-medium text-accent transition-colors hover:opacity-80"
           >
             Import CSV
           </button>
@@ -53,7 +53,7 @@ export default function TransactionsPage() {
 
         <TransactionList transactions={transactions} />
 
-        <p className="text-center text-xs text-gray-400">
+        <p className="text-center text-xs text-muted-light">
           {transactions.length} transaction{transactions.length !== 1 ? 's' : ''}
         </p>
       </div>

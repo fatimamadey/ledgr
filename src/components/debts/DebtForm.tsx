@@ -39,7 +39,7 @@ export default function DebtForm({ onClose }: { onClose?: () => void }) {
 
   return (
     <Card>
-      <h3 className="mb-4 text-lg font-semibold text-gray-900">Add Debt</h3>
+      <h3 className="mb-4 text-lg font-semibold text-foreground">Add Debt</h3>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="flex gap-2">
           <button
@@ -48,7 +48,7 @@ export default function DebtForm({ onClose }: { onClose?: () => void }) {
             className={`flex-1 rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
               direction === 'owed_to'
                 ? 'bg-[#f8eced] text-[#a85060] ring-1 ring-[#e0b4b9]'
-                : 'bg-gray-50 text-gray-500 hover:bg-gray-100'
+                : 'bg-surface-hover text-muted hover:bg-border-light'
             }`}
           >
             I Owe
@@ -59,7 +59,7 @@ export default function DebtForm({ onClose }: { onClose?: () => void }) {
             className={`flex-1 rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
               direction === 'owed_from'
                 ? 'bg-[#eef3ee] text-[#5a7d5f] ring-1 ring-[#b8d4ba]'
-                : 'bg-gray-50 text-gray-500 hover:bg-gray-100'
+                : 'bg-surface-hover text-muted hover:bg-border-light'
             }`}
           >
             Owed to Me
@@ -67,7 +67,7 @@ export default function DebtForm({ onClose }: { onClose?: () => void }) {
         </div>
 
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">Debt Name</label>
+          <label className="mb-1 block text-sm font-medium text-foreground">Debt Name</label>
           <input
             type="text"
             value={name}
@@ -75,12 +75,12 @@ export default function DebtForm({ onClose }: { onClose?: () => void }) {
             placeholder="e.g. Student Loan"
             autoFocus
             required
-            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-slate-600 focus:outline-none focus:ring-1 focus:ring-slate-600"
+            className="w-full rounded-lg border border-border px-3 py-2 text-sm bg-surface text-foreground focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
           />
         </div>
 
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">
+          <label className="mb-1 block text-sm font-medium text-foreground">
             {direction === 'owed_to' ? 'Owed To' : 'Owed By'}
           </label>
           <input
@@ -89,13 +89,13 @@ export default function DebtForm({ onClose }: { onClose?: () => void }) {
             onChange={(e) => setCounterparty(e.target.value)}
             placeholder="e.g. Sallie Mae"
             required
-            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-slate-600 focus:outline-none focus:ring-1 focus:ring-slate-600"
+            className="w-full rounded-lg border border-border px-3 py-2 text-sm bg-surface text-foreground focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
           />
         </div>
 
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="mb-1 block text-sm font-medium text-gray-700">Total Amount</label>
+            <label className="mb-1 block text-sm font-medium text-foreground">Total Amount</label>
             <input
               type="number"
               value={totalAmount}
@@ -104,11 +104,11 @@ export default function DebtForm({ onClose }: { onClose?: () => void }) {
               min="0.01"
               step="0.01"
               required
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-slate-600 focus:outline-none focus:ring-1 focus:ring-slate-600"
+              className="w-full rounded-lg border border-border px-3 py-2 text-sm bg-surface text-foreground focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
             />
           </div>
           <div>
-            <label className="mb-1 block text-sm font-medium text-gray-700">Already Paid</label>
+            <label className="mb-1 block text-sm font-medium text-foreground">Already Paid</label>
             <input
               type="number"
               value={paidAmount}
@@ -116,18 +116,18 @@ export default function DebtForm({ onClose }: { onClose?: () => void }) {
               placeholder="0.00"
               min="0"
               step="0.01"
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-slate-600 focus:outline-none focus:ring-1 focus:ring-slate-600"
+              className="w-full rounded-lg border border-border px-3 py-2 text-sm bg-surface text-foreground focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
             />
           </div>
         </div>
 
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">Due Date (optional)</label>
+          <label className="mb-1 block text-sm font-medium text-foreground">Due Date (optional)</label>
           <input
             type="date"
             value={dueDate}
             onChange={(e) => setDueDate(e.target.value)}
-            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-slate-600 focus:outline-none focus:ring-1 focus:ring-slate-600"
+            className="w-full rounded-lg border border-border px-3 py-2 text-sm bg-surface text-foreground focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
           />
         </div>
 
@@ -142,7 +142,7 @@ export default function DebtForm({ onClose }: { onClose?: () => void }) {
             <button
               type="button"
               onClick={onClose}
-              className="rounded-lg border border-gray-300 px-4 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+              className="rounded-lg border border-border px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-surface-hover"
             >
               Cancel
             </button>

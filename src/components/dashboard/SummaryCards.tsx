@@ -12,26 +12,26 @@ export default function SummaryCards() {
   return (
     <div className="grid gap-4 sm:grid-cols-3">
       <Card hover>
-        <p className="text-sm font-medium text-gray-500">Total Balance</p>
+        <p className="text-sm font-medium text-muted">Total Balance</p>
         <AnimatedNumber
           value={balance}
-          className={`mt-1 text-2xl font-bold ${balance >= 0 ? 'text-gray-900' : 'text-[#b8606d]'}`}
+          className={`mt-1 text-2xl font-bold ${balance >= 0 ? 'text-foreground' : 'text-expense'}`}
         />
       </Card>
 
       <Card hover>
-        <p className="text-sm font-medium text-gray-500">Income This Month</p>
+        <p className="text-sm font-medium text-muted">Income This Month</p>
         <AnimatedNumber
           value={income}
-          className="mt-1 text-2xl font-bold text-[#6b8f71]"
+          className="mt-1 text-2xl font-bold text-income"
         />
       </Card>
 
       <Card hover>
-        <p className="text-sm font-medium text-gray-500">Expenses This Month</p>
+        <p className="text-sm font-medium text-muted">Expenses This Month</p>
         <AnimatedNumber
           value={expenses}
-          className="mt-1 text-2xl font-bold text-[#b8606d]"
+          className="mt-1 text-2xl font-bold text-expense"
         />
       </Card>
     </div>

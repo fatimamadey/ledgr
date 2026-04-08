@@ -31,21 +31,21 @@ export default function BudgetForm({ onClose }: { onClose?: () => void }) {
   if (availableCategories.length === 0) {
     return (
       <Card>
-        <p className="text-sm text-gray-500">All categories have budgets set.</p>
+        <p className="text-sm text-muted">All categories have budgets set.</p>
       </Card>
     );
   }
 
   return (
     <Card>
-      <h3 className="mb-4 text-lg font-semibold text-gray-900">Set Budget</h3>
+      <h3 className="mb-4 text-lg font-semibold text-foreground">Set Budget</h3>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">Category</label>
+          <label className="mb-1 block text-sm font-medium text-foreground">Category</label>
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value as Category)}
-            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-slate-600 focus:outline-none focus:ring-1 focus:ring-slate-600"
+            className="w-full rounded-lg border border-border px-3 py-2 text-sm bg-surface text-foreground focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
           >
             {availableCategories.map((cat) => (
               <option key={cat} value={cat}>
@@ -56,7 +56,7 @@ export default function BudgetForm({ onClose }: { onClose?: () => void }) {
         </div>
 
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">Monthly Limit</label>
+          <label className="mb-1 block text-sm font-medium text-foreground">Monthly Limit</label>
           <input
             type="number"
             value={monthlyLimit}
@@ -65,7 +65,7 @@ export default function BudgetForm({ onClose }: { onClose?: () => void }) {
             min="1"
             step="0.01"
             required
-            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-slate-600 focus:outline-none focus:ring-1 focus:ring-slate-600"
+            className="w-full rounded-lg border border-border px-3 py-2 text-sm bg-surface text-foreground focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
           />
         </div>
 
@@ -80,7 +80,7 @@ export default function BudgetForm({ onClose }: { onClose?: () => void }) {
             <button
               type="button"
               onClick={onClose}
-              className="rounded-lg border border-gray-300 px-4 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+              className="rounded-lg border border-border px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-surface-hover"
             >
               Cancel
             </button>

@@ -75,10 +75,10 @@ export default function TransactionDetailPage({
       <PageContainer title="Transaction Not Found">
         <Card>
           <div className="py-12 text-center">
-            <Search size={32} className="mx-auto text-gray-300" />
-            <p className="mt-3 text-sm font-medium text-gray-900">Transaction not found</p>
-            <p className="mt-1 text-sm text-gray-500">This transaction may have been deleted.</p>
-            <Link href="/transactions" className="mt-4 inline-block text-sm font-medium text-[#6b7b6b] hover:text-[#4d5c4d]">
+            <Search size={32} className="mx-auto text-muted-light" />
+            <p className="mt-3 text-sm font-medium text-foreground">Transaction not found</p>
+            <p className="mt-1 text-sm text-muted">This transaction may have been deleted.</p>
+            <Link href="/transactions" className="mt-4 inline-block text-sm font-medium text-accent hover:text-[#4d5c4d]">
               Back to Transactions
             </Link>
           </div>
@@ -96,7 +96,7 @@ export default function TransactionDetailPage({
             <>
               <button
                 onClick={startEdit}
-                className="inline-flex items-center gap-1.5 rounded-lg border border-gray-300 px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+                className="inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-2 text-sm font-medium text-foreground hover:bg-surface-hover"
               >
                 <Pencil size={14} />
                 Edit
@@ -112,7 +112,7 @@ export default function TransactionDetailPage({
           )}
           <Link
             href="/transactions"
-            className="inline-flex items-center gap-1.5 rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+            className="inline-flex items-center gap-1.5 rounded-lg border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-surface-hover"
           >
             <ArrowLeft size={14} />
             Back
@@ -127,42 +127,42 @@ export default function TransactionDetailPage({
               <div className="space-y-4">
                 <div className="flex gap-2">
                   <button type="button" onClick={() => setEditType('expense')}
-                    className={`flex-1 rounded-lg px-4 py-2 text-sm font-medium transition-colors ${editType === 'expense' ? 'bg-[#f8eced] text-[#a85060] ring-1 ring-[#e0b4b9]' : 'bg-gray-50 text-gray-500 hover:bg-gray-100'}`}>
+                    className={`flex-1 rounded-lg px-4 py-2 text-sm font-medium transition-colors ${editType === 'expense' ? 'bg-[#f8eced] text-[#a85060] ring-1 ring-[#e0b4b9]' : 'bg-surface-hover text-muted hover:bg-border-light'}`}>
                     Expense
                   </button>
                   <button type="button" onClick={() => setEditType('income')}
-                    className={`flex-1 rounded-lg px-4 py-2 text-sm font-medium transition-colors ${editType === 'income' ? 'bg-[#eef3ee] text-[#5a7d5f] ring-1 ring-[#b8d4ba]' : 'bg-gray-50 text-gray-500 hover:bg-gray-100'}`}>
+                    className={`flex-1 rounded-lg px-4 py-2 text-sm font-medium transition-colors ${editType === 'income' ? 'bg-[#eef3ee] text-[#5a7d5f] ring-1 ring-[#b8d4ba]' : 'bg-surface-hover text-muted hover:bg-border-light'}`}>
                     Income
                   </button>
                 </div>
                 <div>
-                  <label className="mb-1 block text-sm font-medium text-gray-700">Description</label>
+                  <label className="mb-1 block text-sm font-medium text-foreground">Description</label>
                   <input type="text" value={editDesc} onChange={(e) => setEditDesc(e.target.value)}
-                    className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-slate-600 focus:outline-none focus:ring-1 focus:ring-slate-600" />
+                    className="w-full rounded-lg border border-border px-3 py-2 text-sm bg-surface text-foreground focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent" />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="mb-1 block text-sm font-medium text-gray-700">Amount</label>
+                    <label className="mb-1 block text-sm font-medium text-foreground">Amount</label>
                     <input type="number" value={editAmount} onChange={(e) => setEditAmount(e.target.value)} min="0.01" step="0.01"
-                      className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-slate-600 focus:outline-none focus:ring-1 focus:ring-slate-600" />
+                      className="w-full rounded-lg border border-border px-3 py-2 text-sm bg-surface text-foreground focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent" />
                   </div>
                   <div>
-                    <label className="mb-1 block text-sm font-medium text-gray-700">Date</label>
+                    <label className="mb-1 block text-sm font-medium text-foreground">Date</label>
                     <input type="date" value={editDate} onChange={(e) => setEditDate(e.target.value)}
-                      className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-slate-600 focus:outline-none focus:ring-1 focus:ring-slate-600" />
+                      className="w-full rounded-lg border border-border px-3 py-2 text-sm bg-surface text-foreground focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent" />
                   </div>
                 </div>
                 <div>
-                  <label className="mb-1 block text-sm font-medium text-gray-700">Category</label>
+                  <label className="mb-1 block text-sm font-medium text-foreground">Category</label>
                   <select value={editCategory} onChange={(e) => setEditCategory(e.target.value as Category)}
-                    className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-slate-600 focus:outline-none focus:ring-1 focus:ring-slate-600">
+                    className="w-full rounded-lg border border-border px-3 py-2 text-sm bg-surface text-foreground focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent">
                     {CATEGORIES.map((cat) => <option key={cat} value={cat}>{cat}</option>)}
                   </select>
                 </div>
                 <div>
-                  <label className="mb-1 block text-sm font-medium text-gray-700">Notes</label>
+                  <label className="mb-1 block text-sm font-medium text-foreground">Notes</label>
                   <textarea value={editNotes} onChange={(e) => setEditNotes(e.target.value)} rows={2}
-                    className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-slate-600 focus:outline-none focus:ring-1 focus:ring-slate-600" />
+                    className="w-full rounded-lg border border-border px-3 py-2 text-sm bg-surface text-foreground focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent" />
                 </div>
                 <div className="flex gap-2">
                   <button onClick={saveEdit}
@@ -170,7 +170,7 @@ export default function TransactionDetailPage({
                     Save Changes
                   </button>
                   <button onClick={() => setEditing(false)}
-                    className="rounded-lg border border-gray-300 px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50">
+                    className="rounded-lg border border-border px-4 py-2.5 text-sm font-medium text-foreground hover:bg-surface-hover">
                     Cancel
                   </button>
                 </div>
@@ -181,17 +181,17 @@ export default function TransactionDetailPage({
               <div className="flex items-start justify-between">
                 <div>
                   <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100">
-                      <CategoryIcon category={transaction.category} size={18} className="text-gray-500" />
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-border-light">
+                      <CategoryIcon category={transaction.category} size={18} className="text-muted" />
                     </div>
-                    <h2 className="text-xl font-bold text-gray-900">{transaction.description}</h2>
+                    <h2 className="text-xl font-bold text-foreground">{transaction.description}</h2>
                   </div>
                   <div className="mt-3 flex flex-wrap gap-2">
                     <span className="inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-medium"
                       style={{ backgroundColor: CATEGORY_COLORS[transaction.category] + '18', color: CATEGORY_COLORS[transaction.category] }}>
                       {transaction.category}
                     </span>
-                    <span className="inline-flex items-center rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-600">
+                    <span className="inline-flex items-center rounded-full bg-border-light px-3 py-1 text-xs font-medium text-muted">
                       {formatDate(transaction.date)}
                     </span>
                     <span className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-medium ${transaction.type === 'income' ? 'bg-[#eef3ee] text-[#5a7d5f]' : 'bg-[#f8eced] text-[#b8606d]'}`}>
@@ -199,21 +199,21 @@ export default function TransactionDetailPage({
                     </span>
                   </div>
                 </div>
-                <span className={`text-2xl font-bold ${transaction.type === 'income' ? 'text-[#6b8f71]' : 'text-[#c4727f]'}`}>
+                <span className={`text-2xl font-bold ${transaction.type === 'income' ? 'text-income' : 'text-expense'}`}>
                   {transaction.type === 'income' ? '+' : '-'}{formatCurrency(transaction.amount)}
                 </span>
               </div>
               {transaction.notes && (
-                <div className="mt-4 rounded-lg bg-gray-50 p-3">
-                  <p className="text-xs font-medium text-gray-500">Notes</p>
-                  <p className="mt-1 text-sm text-gray-700">{transaction.notes}</p>
+                <div className="mt-4 rounded-lg bg-surface-hover p-3">
+                  <p className="text-xs font-medium text-muted">Notes</p>
+                  <p className="mt-1 text-sm text-foreground">{transaction.notes}</p>
                 </div>
               )}
             </Card>
           )}
 
           <Card>
-            <h3 className="mb-3 text-sm font-medium text-gray-500">
+            <h3 className="mb-3 text-sm font-medium text-muted">
               {transaction.category} Spending (Last 6 Months)
             </h3>
             <CategorySpendingChart category={transaction.category} />
@@ -222,19 +222,19 @@ export default function TransactionDetailPage({
 
         <div>
           <Card>
-            <h3 className="mb-3 text-sm font-medium text-gray-500">Similar Transactions</h3>
+            <h3 className="mb-3 text-sm font-medium text-muted">Similar Transactions</h3>
             {similar.length === 0 ? (
-              <p className="py-4 text-center text-xs text-gray-400">No similar transactions found</p>
+              <p className="py-4 text-center text-xs text-muted-light">No similar transactions found</p>
             ) : (
               <div className="space-y-2">
                 {similar.map((t) => (
                   <Link key={t.id} href={`/transactions/${t.id}`}
-                    className="flex items-center justify-between rounded-lg px-2 py-2 transition-colors hover:bg-gray-50">
+                    className="flex items-center justify-between rounded-lg px-2 py-2 transition-colors hover:bg-surface-hover">
                     <div>
-                      <p className="text-sm font-medium text-gray-900">{t.description}</p>
-                      <p className="text-xs text-gray-400">{formatDate(t.date)}</p>
+                      <p className="text-sm font-medium text-foreground">{t.description}</p>
+                      <p className="text-xs text-muted-light">{formatDate(t.date)}</p>
                     </div>
-                    <span className={`text-sm font-semibold ${t.type === 'income' ? 'text-[#6b8f71]' : 'text-[#c4727f]'}`}>
+                    <span className={`text-sm font-semibold ${t.type === 'income' ? 'text-income' : 'text-expense'}`}>
                       {t.type === 'income' ? '+' : '-'}{formatCurrency(t.amount)}
                     </span>
                   </Link>

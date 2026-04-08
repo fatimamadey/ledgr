@@ -29,7 +29,7 @@ export default function Dashboard() {
         transactions.length === 0 ? (
           <button
             onClick={loadSeedData}
-            className="rounded-lg border border-[#c4cdc4] bg-[#e8ece8] px-4 py-2 text-sm font-medium text-[#4d5c4d] transition-colors hover:bg-[#dce1dc]"
+            className="rounded-lg border border-border bg-surface-hover px-4 py-2 text-sm font-medium text-accent transition-colors hover:opacity-80"
           >
             Load Sample Data
           </button>

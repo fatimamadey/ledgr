@@ -41,7 +41,7 @@ export default function TransactionForm({ onClose }: { onClose?: () => void }) {
 
   return (
     <Card>
-      <h3 className="mb-4 text-lg font-semibold text-gray-900">Add Transaction</h3>
+      <h3 className="mb-4 text-lg font-semibold text-foreground">Add Transaction</h3>
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Type toggle */}
         <div className="flex gap-2">
@@ -51,7 +51,7 @@ export default function TransactionForm({ onClose }: { onClose?: () => void }) {
             className={`flex-1 rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
               type === 'expense'
                 ? 'bg-[#f8eced] text-[#a85060] ring-1 ring-[#e0b4b9]'
-                : 'bg-gray-50 text-gray-500 hover:bg-gray-100'
+                : 'bg-surface-hover text-muted hover:bg-border-light'
             }`}
           >
             Expense
@@ -62,7 +62,7 @@ export default function TransactionForm({ onClose }: { onClose?: () => void }) {
             className={`flex-1 rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
               type === 'income'
                 ? 'bg-[#eef3ee] text-[#5a7d5f] ring-1 ring-[#b8d4ba]'
-                : 'bg-gray-50 text-gray-500 hover:bg-gray-100'
+                : 'bg-surface-hover text-muted hover:bg-border-light'
             }`}
           >
             Income
@@ -70,7 +70,7 @@ export default function TransactionForm({ onClose }: { onClose?: () => void }) {
         </div>
 
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">Description</label>
+          <label className="mb-1 block text-sm font-medium text-foreground">Description</label>
           <input
             type="text"
             value={description}
@@ -78,13 +78,13 @@ export default function TransactionForm({ onClose }: { onClose?: () => void }) {
             placeholder="e.g. Grocery shopping"
             required
             autoFocus
-            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-slate-600 focus:outline-none focus:ring-1 focus:ring-slate-600"
+            className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm text-foreground focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
           />
         </div>
 
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="mb-1 block text-sm font-medium text-gray-700">Amount</label>
+            <label className="mb-1 block text-sm font-medium text-foreground">Amount</label>
             <input
               type="number"
               value={amount}
@@ -93,27 +93,27 @@ export default function TransactionForm({ onClose }: { onClose?: () => void }) {
               min="0.01"
               step="0.01"
               required
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-slate-600 focus:outline-none focus:ring-1 focus:ring-slate-600"
+              className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm text-foreground focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
             />
           </div>
           <div>
-            <label className="mb-1 block text-sm font-medium text-gray-700">Date</label>
+            <label className="mb-1 block text-sm font-medium text-foreground">Date</label>
             <input
               type="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}
               required
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-slate-600 focus:outline-none focus:ring-1 focus:ring-slate-600"
+              className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm text-foreground focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
             />
           </div>
         </div>
 
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">Category</label>
+          <label className="mb-1 block text-sm font-medium text-foreground">Category</label>
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value as Category)}
-            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-slate-600 focus:outline-none focus:ring-1 focus:ring-slate-600"
+            className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm text-foreground focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
           >
             {CATEGORIES.map((cat) => (
               <option key={cat} value={cat}>
@@ -124,13 +124,13 @@ export default function TransactionForm({ onClose }: { onClose?: () => void }) {
         </div>
 
         <div>
-          <label className="mb-1 block text-sm font-medium text-gray-700">Notes (optional)</label>
+          <label className="mb-1 block text-sm font-medium text-foreground">Notes (optional)</label>
           <textarea
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
             placeholder="Any additional details..."
             rows={2}
-            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-slate-600 focus:outline-none focus:ring-1 focus:ring-slate-600"
+            className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm text-foreground focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
           />
         </div>
 
@@ -145,7 +145,7 @@ export default function TransactionForm({ onClose }: { onClose?: () => void }) {
             <button
               type="button"
               onClick={onClose}
-              className="rounded-lg border border-gray-300 px-4 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+              className="rounded-lg border border-border px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-surface-hover"
             >
               Cancel
             </button>

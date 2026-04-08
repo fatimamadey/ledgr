@@ -42,20 +42,20 @@ export default function DebtsPage() {
 
         {debts.length > 0 && (
           <div className="flex gap-4 text-sm">
-            <span className="text-gray-500">
-              Total owed: <span className="font-semibold text-[#b8606d]">{formatCurrency(totalOwed)}</span>
+            <span className="text-muted">
+              Total owed: <span className="font-semibold text-expense">{formatCurrency(totalOwed)}</span>
             </span>
-            <span className="text-gray-500">
-              Owed to me: <span className="font-semibold text-[#6b8f71]">{formatCurrency(totalOwedToMe)}</span>
+            <span className="text-muted">
+              Owed to me: <span className="font-semibold text-income">{formatCurrency(totalOwedToMe)}</span>
             </span>
           </div>
         )}
 
         {debts.length === 0 ? (
-          <div className="flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-300 py-16 text-center">
-            <FileText size={32} className="text-gray-300" />
-            <p className="mt-3 text-sm font-medium text-gray-900">No debts tracked</p>
-            <p className="mt-1 text-sm text-gray-500">Add your first debt to start tracking</p>
+          <div className="flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-border py-16 text-center">
+            <FileText size={32} className="text-muted-light" />
+            <p className="mt-3 text-sm font-medium text-foreground">No debts tracked</p>
+            <p className="mt-1 text-sm text-muted">Add your first debt to start tracking</p>
           </div>
         ) : (
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

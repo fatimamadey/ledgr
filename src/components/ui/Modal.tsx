@@ -50,16 +50,16 @@ export default function Modal({
         aria-label={title}
         tabIndex={-1}
         className={cn(
-          'relative z-10 max-h-[80vh] overflow-y-auto rounded-xl border border-gray-200 bg-white shadow-xl animate-fade-in outline-none',
+          'relative z-10 max-h-[80vh] overflow-y-auto rounded-xl border border-border bg-surface shadow-xl animate-fade-in outline-none',
           wide ? 'w-full max-w-2xl' : 'w-full max-w-md'
         )}
       >
-        <div className="sticky top-0 flex items-center justify-between border-b border-gray-200 bg-white px-6 py-4 rounded-t-xl">
-          <h2 className="text-lg font-semibold text-gray-900">{title}</h2>
+        <div className="sticky top-0 flex items-center justify-between border-b border-border bg-surface px-6 py-4 rounded-t-xl">
+          <h2 className="text-lg font-semibold text-foreground">{title}</h2>
           <button
             onClick={onClose}
             aria-label="Close dialog"
-            className="rounded-lg p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600"
+            className="rounded-lg p-1 text-muted-light hover:bg-surface-hover hover:text-foreground"
           >
             <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

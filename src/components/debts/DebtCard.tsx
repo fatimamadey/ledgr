@@ -33,8 +33,8 @@ export default function DebtCard({ debt }: { debt: Debt }) {
     <Card hover>
       <div className="flex items-start justify-between">
         <div>
-          <h3 className="font-semibold text-gray-900">{debt.name}</h3>
-          <p className="mt-0.5 text-xs text-gray-500">
+          <h3 className="font-semibold text-foreground">{debt.name}</h3>
+          <p className="mt-0.5 text-xs text-muted">
             {debt.direction === 'owed_to' ? 'Owed to' : 'Owed by'}{' '}
             <span className="font-medium">{debt.counterparty}</span>
           </p>
@@ -52,10 +52,10 @@ export default function DebtCard({ debt }: { debt: Debt }) {
 
       <div className="mt-4">
         <div className="flex items-end justify-between text-sm">
-          <span className="font-semibold text-gray-900">
+          <span className="font-semibold text-foreground">
             {formatCurrency(debt.paidAmount)}
           </span>
-          <span className="text-gray-400">of {formatCurrency(debt.totalAmount)}</span>
+          <span className="text-muted-light">of {formatCurrency(debt.totalAmount)}</span>
         </div>
         <ProgressBar
           percentage={percentage}
@@ -63,15 +63,15 @@ export default function DebtCard({ debt }: { debt: Debt }) {
           className="mt-2"
         />
         <div className="mt-1.5 flex items-center justify-between text-xs">
-          <span className={isPaidOff ? 'text-[#6b8f71] font-medium' : 'text-gray-500'}>
+          <span className={isPaidOff ? 'text-[#6b8f71] font-medium' : 'text-muted'}>
             {isPaidOff ? 'Paid off!' : `${formatCurrency(remaining)} remaining`}
           </span>
-          <span className="text-gray-400">{Math.round(percentage)}%</span>
+          <span className="text-muted-light">{Math.round(percentage)}%</span>
         </div>
       </div>
 
       {debt.dueDate && (
-        <p className="mt-3 text-xs text-gray-400">Due: {formatDate(debt.dueDate)}</p>
+        <p className="mt-3 text-xs text-muted-light">Due: {formatDate(debt.dueDate)}</p>
       )}
 
       <div className="mt-4 flex gap-2">
@@ -86,7 +86,7 @@ export default function DebtCard({ debt }: { debt: Debt }) {
                   placeholder="Amount"
                   min="0.01"
                   step="0.01"
-                  className="w-full rounded-lg border border-gray-300 px-2 py-1.5 text-sm focus:border-slate-600 focus:outline-none focus:ring-1 focus:ring-slate-600"
+                  className="w-full rounded-lg border border-border px-2 py-1.5 text-sm bg-surface text-foreground focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
                 />
                 <button
                   onClick={handlePayment}
@@ -96,7 +96,7 @@ export default function DebtCard({ debt }: { debt: Debt }) {
                 </button>
                 <button
                   onClick={() => setShowPayment(false)}
-                  className="text-xs text-gray-400 hover:text-gray-600"
+                  className="text-xs text-muted-light hover:text-foreground"
                 >
                   Cancel
                 </button>
@@ -113,7 +113,7 @@ export default function DebtCard({ debt }: { debt: Debt }) {
         )}
         <button
           onClick={() => setShowDeleteConfirm(true)}
-          className="ml-auto text-xs text-gray-400 hover:text-[#c4727f]"
+          className="ml-auto text-xs text-muted-light hover:text-[#c4727f]"
         >
           Delete
         </button>

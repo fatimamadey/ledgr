@@ -23,24 +23,24 @@ export default function SpendingPieChart() {
   return (
     <Card>
       <div className="mb-4 flex items-center justify-between">
-        <h3 className="text-sm font-medium text-gray-500">Spending by Category</h3>
+        <h3 className="text-sm font-medium text-muted">Spending by Category</h3>
         <div className="flex items-center gap-2">
           <button
             onClick={() => setIndex((i) => i - 1)}
             disabled={!canPrev}
-            className="rounded-md p-1 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-600 disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-gray-400"
+            className="rounded-md p-1 text-muted-light transition-colors hover:bg-surface-hover hover:text-foreground disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-muted-light"
           >
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
-          <span className="min-w-[120px] text-center text-xs font-medium text-gray-700">
+          <span className="min-w-[120px] text-center text-xs font-medium text-foreground">
             {monthLabel}
           </span>
           <button
             onClick={() => setIndex((i) => i + 1)}
             disabled={!canNext}
-            className="rounded-md p-1 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-600 disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-gray-400"
+            className="rounded-md p-1 text-muted-light transition-colors hover:bg-surface-hover hover:text-foreground disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-muted-light"
           >
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -50,7 +50,7 @@ export default function SpendingPieChart() {
       </div>
 
       {spending.length === 0 ? (
-        <div className="flex h-48 items-center justify-center text-sm text-gray-400">
+        <div className="flex h-48 items-center justify-center text-sm text-muted-light">
           No expense data for {monthLabel}
         </div>
       ) : (
@@ -81,7 +81,9 @@ export default function SpendingPieChart() {
                   formatter={(value) => formatCurrency(Number(value))}
                   contentStyle={{
                     borderRadius: '8px',
-                    border: '1px solid #e5e7eb',
+                    border: '1px solid var(--border)',
+                    backgroundColor: 'var(--surface)',
+                    color: 'var(--foreground)',
                     fontSize: '13px',
                   }}
                 />
@@ -90,7 +92,7 @@ export default function SpendingPieChart() {
           </div>
           <div className="mt-2 flex flex-wrap gap-3">
             {spending.map((entry) => (
-              <div key={entry.category} className="flex items-center gap-1.5 text-xs text-gray-600">
+              <div key={entry.category} className="flex items-center gap-1.5 text-xs text-muted">
                 <span
                   className="h-2.5 w-2.5 rounded-full"
                   style={{ backgroundColor: CATEGORY_COLORS[entry.category as Category] }}
@@ -109,7 +111,7 @@ export default function SpendingPieChart() {
             key={m}
             onClick={() => setIndex(i)}
             className={`h-1.5 rounded-full transition-all ${
-              i === index ? 'w-4 bg-[#5c6b5c]' : 'w-1.5 bg-gray-300 hover:bg-gray-400'
+              i === index ? 'w-4 bg-accent' : 'w-1.5 bg-muted-light hover:bg-muted'
             }`}
           />
         ))}

@@ -33,15 +33,15 @@ export default function FileUploader({
       className={cn(
         'flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed px-6 py-16 text-center transition-colors',
         isDragging
-          ? 'border-slate-500 bg-[#e8ece8]'
-          : 'border-gray-300 bg-white hover:border-gray-400 hover:bg-gray-50'
+          ? 'border-accent bg-surface-hover'
+          : 'border-border bg-surface hover:border-muted-light hover:bg-surface-hover'
       )}
     >
-      <Upload size={28} className="text-gray-400" />
-      <p className="mt-3 text-sm font-medium text-gray-900">
+      <Upload size={28} className="text-muted-light" />
+      <p className="mt-3 text-sm font-medium text-foreground">
         Drop your CSV here or click to browse
       </p>
-      <p className="mt-1 text-xs text-gray-500">Accepts .csv bank statement exports</p>
+      <p className="mt-1 text-xs text-muted">Accepts .csv bank statement exports</p>
       <input
         ref={inputRef}
         type="file"

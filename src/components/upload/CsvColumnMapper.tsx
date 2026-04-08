@@ -41,17 +41,17 @@ export default function CsvColumnMapper({
 
   return (
     <div>
-      <p className="mb-4 text-xs text-gray-500">
+      <p className="mb-4 text-xs text-muted">
         Match your CSV columns to the fields below. We auto-detected what we could.
       </p>
       <div className="space-y-3">
         {fields.map(({ key, label }) => (
           <div key={key} className="flex items-center gap-4">
-            <label className="w-28 text-sm font-medium text-gray-700">{label}</label>
+            <label className="w-28 text-sm font-medium text-foreground">{label}</label>
             <select
               value={mapping[key] ?? ''}
               onChange={(e) => setMapping({ ...mapping, [key]: e.target.value || null })}
-              className="flex-1 rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-slate-600 focus:outline-none focus:ring-1 focus:ring-slate-600"
+              className="flex-1 rounded-lg border border-border px-3 py-2 text-sm bg-surface text-foreground focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
             >
               <option value="">-- Select column --</option>
               {headers.map((h) => (
@@ -66,7 +66,7 @@ export default function CsvColumnMapper({
       <button
         onClick={() => onMapping(mapping)}
         disabled={!mapping.description || !mapping.amount || !mapping.date}
-        className="mt-4 w-full rounded-lg bg-[#5c6b5c] px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#4d5c4d] disabled:bg-gray-300 disabled:cursor-not-allowed"
+        className="mt-4 w-full rounded-lg bg-[#5c6b5c] px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#4d5c4d] disabled:bg-border disabled:cursor-not-allowed"
       >
         Apply Mapping
       </button>

@@ -115,7 +115,7 @@ export default function UploadModal({
   };
 
   const stepLabel = (s: Step, current: Step) =>
-    s === current ? 'text-[#5c6b5c] font-medium' : 'text-gray-400';
+    s === current ? 'text-accent font-medium' : 'text-muted-light';
 
   return (
     <Modal
@@ -127,11 +127,11 @@ export default function UploadModal({
       {/* Step indicator */}
       <div className="mb-5 flex items-center gap-2 text-xs">
         <span className={stepLabel('upload', step)}>Upload</span>
-        <span className="text-gray-300">→</span>
+        <span className="text-muted-light">→</span>
         <span className={stepLabel('map', step)}>Map Columns</span>
-        <span className="text-gray-300">→</span>
+        <span className="text-muted-light">→</span>
         <span className={stepLabel('preview', step)}>Preview</span>
-        <span className="text-gray-300">→</span>
+        <span className="text-muted-light">→</span>
         <span className={stepLabel('done', step)}>Done</span>
       </div>
 
@@ -144,7 +144,7 @@ export default function UploadModal({
       {loading && (
         <div className="flex items-center justify-center gap-3 py-12">
           <div className="h-5 w-5 animate-spin rounded-full border-2 border-slate-700 border-t-transparent" />
-          <span className="text-sm text-gray-500">Parsing CSV...</span>
+          <span className="text-sm text-muted">Parsing CSV...</span>
         </div>
       )}
 
@@ -158,7 +158,7 @@ export default function UploadModal({
 
       {step === 'preview' && (
         <div>
-          <p className="mb-3 text-xs text-gray-500">
+          <p className="mb-3 text-xs text-muted">
             We auto-detected categories and types from descriptions. You can adjust each row before importing.
           </p>
           <TransactionPreview
@@ -178,16 +178,16 @@ export default function UploadModal({
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <p className="mt-3 text-lg font-semibold text-gray-900">
+          <p className="mt-3 text-lg font-semibold text-foreground">
             {importedCount} transaction{importedCount !== 1 ? 's' : ''} imported!
           </p>
-          <p className="mt-1 text-sm text-gray-500">
+          <p className="mt-1 text-sm text-muted">
             Your transactions have been added.
           </p>
           <div className="mt-4 flex justify-center gap-2">
             <button
               onClick={reset}
-              className="rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+              className="rounded-lg border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-surface-hover"
             >
               Upload Another
             </button>

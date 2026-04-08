@@ -4,6 +4,7 @@ import "./globals.css";
 import { Toaster } from "sonner";
 import Sidebar from "@/components/layout/Sidebar";
 import StoreProvider from "@/store/StoreProvider";
+import ThemeProvider from "@/components/ThemeProvider";
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -30,15 +31,18 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${roboto.variable} ${robotoMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="flex min-h-full" style={{ backgroundColor: '#f7f5f2' }}>
-        <StoreProvider>
-          <Toaster position="bottom-right" richColors />
-          <Sidebar />
-          <main className="flex-1 lg:ml-64">
-            {children}
-          </main>
-        </StoreProvider>
+      <body className="flex min-h-full bg-background text-foreground">
+        <ThemeProvider>
+          <StoreProvider>
+            <Toaster position="bottom-right" richColors />
+            <Sidebar />
+            <main className="flex-1 lg:ml-64">
+              {children}
+            </main>
+          </StoreProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

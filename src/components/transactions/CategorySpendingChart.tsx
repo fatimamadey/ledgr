@@ -18,7 +18,7 @@ export default function CategorySpendingChart({ category }: { category: Category
 
   if (!hasData) {
     return (
-      <div className="flex h-32 items-center justify-center text-xs text-gray-400">
+      <div className="flex h-32 items-center justify-center text-xs text-muted-light">
         No spending history for {category}
       </div>
     );
@@ -28,13 +28,15 @@ export default function CategorySpendingChart({ category }: { category: Category
     <div className="h-40">
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={chartData}>
-          <XAxis dataKey="label" tick={{ fontSize: 11, fill: '#9ca3af' }} />
-          <YAxis tick={{ fontSize: 11, fill: '#9ca3af' }} tickFormatter={(v) => `$${v}`} width={50} />
+          <XAxis dataKey="label" tick={{ fontSize: 11, fill: 'var(--muted-light)' }} />
+          <YAxis tick={{ fontSize: 11, fill: 'var(--muted-light)' }} tickFormatter={(v) => `$${v}`} width={50} />
           <Tooltip
             formatter={(value) => formatCurrency(Number(value))}
             contentStyle={{
               borderRadius: '8px',
-              border: '1px solid #e5e7eb',
+              border: '1px solid var(--border)',
+              backgroundColor: 'var(--surface)',
+              color: 'var(--foreground)',
               fontSize: '12px',
             }}
           />

@@ -33,34 +33,34 @@ export default function BudgetCard({ budget }: { budget: Budget }) {
     <Card hover>
       <div className="flex items-start justify-between">
         <div className="flex items-center gap-2.5">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gray-100">
-            <CategoryIcon category={budget.category} size={15} className="text-gray-500" />
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-border-light">
+            <CategoryIcon category={budget.category} size={15} className="text-muted" />
           </div>
-          <h3 className="font-semibold text-gray-900">{budget.category}</h3>
+          <h3 className="font-semibold text-foreground">{budget.category}</h3>
         </div>
         <Badge label={status.label} variant={status.variant} />
       </div>
 
       <div className="mt-4">
         <div className="flex items-end justify-between text-sm">
-          <span className="font-semibold text-gray-900">{formatCurrency(spent)}</span>
-          <span className="text-gray-400">of {formatCurrency(budget.monthlyLimit)}</span>
+          <span className="font-semibold text-foreground">{formatCurrency(spent)}</span>
+          <span className="text-muted-light">of {formatCurrency(budget.monthlyLimit)}</span>
         </div>
         <ProgressBar percentage={percentage} color={status.barColor} className="mt-2" />
         <div className="mt-1.5 flex items-center justify-between text-xs">
-          <span className={remaining >= 0 ? 'text-gray-500' : 'text-[#b8606d] font-medium'}>
+          <span className={remaining >= 0 ? 'text-muted' : 'text-[#b8606d] font-medium'}>
             {remaining >= 0
               ? `${formatCurrency(remaining)} remaining`
               : `${formatCurrency(Math.abs(remaining))} over`}
           </span>
-          <span className="text-gray-400">{Math.round(percentage)}%</span>
+          <span className="text-muted-light">{Math.round(percentage)}%</span>
         </div>
       </div>
 
       <div className="mt-4">
         <button
           onClick={() => setShowDeleteConfirm(true)}
-          className="text-xs text-gray-400 hover:text-[#c4727f]"
+          className="text-xs text-muted-light hover:text-[#c4727f]"
         >
           Remove budget
         </button>

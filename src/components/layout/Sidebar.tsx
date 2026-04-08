@@ -2,12 +2,32 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, ArrowLeftRight, FileText, Target } from 'lucide-react';
+import { LayoutDashboard, ArrowLeftRight, FileText, Target, Sun, Moon } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useTheme } from 'next-themes';
 import { toast } from 'sonner';
 import { useLedgrStore } from '@/store';
 import { generateSeedTransactions, generateSeedDebts, generateSeedBudgets } from '@/lib/seed';
+
+function ThemeToggle() {
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) return <div className="h-9 w-9" />;
+
+  return (
+    <button
+      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+      aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+      className="rounded-lg p-2 text-muted transition-colors hover:bg-surface-hover hover:text-foreground"
+    >
+      {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+    </button>
+  );
+}
 
 function SeedDataButtons() {
   const transactions = useLedgrStore((s) => s.transactions);
@@ -32,7 +52,7 @@ function SeedDataButtons() {
       {transactions.length === 0 && (
         <button
           onClick={loadSeed}
-          className="w-full rounded-lg px-3 py-2 text-left text-xs font-medium text-[#6b7b6b] hover:bg-[#e8ece8]"
+          className="w-full rounded-lg px-3 py-2 text-left text-xs font-medium text-accent hover:bg-surface-hover"
         >
           Load Sample Data
         </button>
@@ -40,7 +60,7 @@ function SeedDataButtons() {
       {transactions.length > 0 && (
         <button
           onClick={clearAll}
-          className="w-full rounded-lg px-3 py-2 text-left text-xs font-medium text-gray-400 hover:bg-[#f8eced] hover:text-[#b8606d]"
+          className="w-full rounded-lg px-3 py-2 text-left text-xs font-medium text-muted-light hover:bg-[#f8eced] hover:text-expense dark:hover:bg-[#3d2a2d]"
         >
           Clear All Data
         </button>
@@ -70,9 +90,9 @@ export default function Sidebar() {
       <button
         onClick={() => setMobileOpen(!mobileOpen)}
         aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-        className="fixed top-4 left-4 z-50 rounded-lg bg-white p-2 shadow-md lg:hidden"
+        className="fixed top-4 left-4 z-50 rounded-lg bg-surface p-2 shadow-md lg:hidden"
       >
-        <svg className="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg className="h-6 w-6 text-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           {mobileOpen ? (
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
           ) : (
@@ -90,12 +110,13 @@ export default function Sidebar() {
 
       <aside
         className={cn(
-          'fixed top-0 left-0 z-40 flex h-screen w-64 flex-col border-r border-gray-200 bg-white transition-transform duration-200 lg:translate-x-0',
+          'fixed top-0 left-0 z-40 flex h-screen w-64 flex-col border-r border-border bg-surface transition-transform duration-200 lg:translate-x-0',
           mobileOpen ? 'translate-x-0' : '-translate-x-full'
         )}
       >
-        <div className="flex h-16 items-center gap-2 border-b border-gray-200 px-6">
-          <span className="text-2xl font-bold tracking-tight text-[#4d5c4d]">Ledgr</span>
+        <div className="flex h-16 items-center justify-between border-b border-border px-6">
+          <span className="text-2xl font-bold tracking-tight text-accent">Ledgr</span>
+          <ThemeToggle />
         </div>
 
         <nav className="flex-1 space-y-1 px-3 py-4">
@@ -109,8 +130,8 @@ export default function Sidebar() {
                 className={cn(
                   'flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-150',
                   isActive(item.href)
-                    ? 'bg-[#e8ece8] text-[#3d4a3d]'
-                    : 'text-gray-500 hover:bg-gray-50 hover:text-gray-800'
+                    ? 'bg-[#e8ece8] text-[#3d4a3d] dark:bg-[#2a3a2a] dark:text-[#a8c4a8]'
+                    : 'text-muted hover:bg-surface-hover hover:text-foreground'
                 )}
               >
                 <Icon size={18} strokeWidth={isActive(item.href) ? 2 : 1.5} />
@@ -120,9 +141,9 @@ export default function Sidebar() {
           })}
         </nav>
 
-        <div className="border-t border-gray-200 px-4 py-4 space-y-2">
+        <div className="border-t border-border px-4 py-4 space-y-2">
           <SeedDataButtons />
-          <p className="text-xs text-gray-300 px-2">Ledgr v1.0</p>
+          <p className="text-xs text-muted-light px-2">Ledgr v1.0</p>
         </div>
       </aside>
     </>

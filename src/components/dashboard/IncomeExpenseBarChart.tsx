@@ -18,8 +18,8 @@ export default function IncomeExpenseBarChart() {
   if (!hasData) {
     return (
       <Card>
-        <h3 className="mb-4 text-sm font-medium text-gray-500">Income vs Expenses</h3>
-        <div className="flex h-48 items-center justify-center text-sm text-gray-400">
+        <h3 className="mb-4 text-sm font-medium text-muted">Income vs Expenses</h3>
+        <div className="flex h-48 items-center justify-center text-sm text-muted-light">
           No data for the past 6 months
         </div>
       </Card>
@@ -28,18 +28,20 @@ export default function IncomeExpenseBarChart() {
 
   return (
     <Card>
-      <h3 className="mb-4 text-sm font-medium text-gray-500">Income vs Expenses (Last 6 Months)</h3>
+      <h3 className="mb-4 text-sm font-medium text-muted">Income vs Expenses (Last 6 Months)</h3>
       <div className="h-64">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={chartData} barGap={4}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
-            <XAxis dataKey="label" tick={{ fontSize: 12, fill: '#6b7280' }} />
-            <YAxis tick={{ fontSize: 12, fill: '#6b7280' }} tickFormatter={(v) => `$${v}`} />
+            <CartesianGrid strokeDasharray="3 3" stroke="var(--border-light)" />
+            <XAxis dataKey="label" tick={{ fontSize: 12, fill: 'var(--muted)' }} />
+            <YAxis tick={{ fontSize: 12, fill: 'var(--muted)' }} tickFormatter={(v) => `$${v}`} />
             <Tooltip
               formatter={(value) => formatCurrency(Number(value))}
               contentStyle={{
                 borderRadius: '8px',
-                border: '1px solid #e5e7eb',
+                border: '1px solid var(--border)',
+                backgroundColor: 'var(--surface)',
+                color: 'var(--foreground)',
                 fontSize: '13px',
               }}
             />
